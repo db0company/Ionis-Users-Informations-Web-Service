@@ -523,6 +523,32 @@ plan=..General
 
 	<!-- -------------------------------------------------------------------------------- -->
 
+	<h3>Search for user</h3>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"search"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>query : </b>all or part of a login or name</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li>A list of logins matching the given criteria</li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=search&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">query</span>=corfa</code>
+	
+	<pre>[result]
+1=corfa_a
+2=corfa_u
+3=corfa_z</pre>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
 
 	<hr />
 	<h2 id="error">Errors</h2>

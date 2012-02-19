@@ -149,3 +149,18 @@ function	ws_get_plan($result)
 					     'plan'));
   return ($result);
 }
+
+function	ws_search($result)
+{
+  global	$iui;
+
+  if (!(check_params($result, array('query'))))
+    return ($result);
+  if (isset($_GET['limit'])) {
+    $limit = intval($_GET['limit']);
+    $result['result'] = $iui->search($_GET['query'], $limit);
+  } else {
+    $result['result'] = $iui->search($_GET['query']);
+  }
+  return ($result);
+}
