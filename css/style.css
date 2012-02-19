@@ -1,0 +1,95 @@
+/* Override some defaults */
+html, body {
+    background-color: #eee;
+}
+body {
+    padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
+}
+.container > footer p {
+    text-align: center; /* center align it with the container */
+}
+.container {
+    width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
+}
+
+/* The white background content wrapper */
+.content {
+    background-color: #fff;
+    padding: 20px;
+    margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+/* Page header tweaks */
+.page-header {
+    background-color: #f5f5f5;
+    padding: 20px 20px 10px;
+    margin: -20px -20px 20px;
+}
+
+/* Styles you shouldn't keep as they are for displaying this base example only */
+.content .span10,
+.content .span4 {
+    min-height: 500px;
+}
+/* Give a quick and non-cross-browser friendly divider */
+.content .span4 {
+    margin-left: 0;
+    padding-left: 19px;
+    border-left: 1px solid #eee;
+}
+
+.topbar .btn {
+    border: 0;
+}
+
+h4 {
+    text-indent: 40px;
+}
+
+h3 {
+    text-indent: 20px;
+}
+
+h3, h4 {
+    padding: 10px;
+}
+
+code {
+    display: block;
+    padding: 3px 4px;
+    color: #0069D6;
+    background-color: #F7F7F9;
+    border: 1px solid #E1E1E8;
+    margin: 10px;
+    padding: 8px;
+    white-space: pre;
+}
+
+span.r {
+    color: #FF0000;
+}
+
+span.rb {
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.contact {
+    width: 100%;
+    margin: 4px;
+}
+.contact_label {
+    height: 18px;
+    padding: 6px;
+    margin: 4px;
+}
+.right
+{
+    text-align: right;
+}

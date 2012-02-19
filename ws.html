@@ -1,0 +1,572 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ionis-Users-Informations : Get informations about Ionis students :: Web Service</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="img/fav.ico" /> 
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href=".">Ionis Users Informations</a>
+          <ul class="nav">
+            <li class="active"><a href="ws.html">Web Service</a></li>
+            <li><a href="https://github.com/db0company/Ionis-Users-Informations" target="_blank">Sources on GitHub</a></li>
+            <li><a href="who.html">Who's using it?</a></li>
+            <li><a href="http://peuple.paysdu42.fr/" target="_blank">Example</a></li>
+            <li><a href="contact.php">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="page-header">
+          <h1>Web Service <small>- Get informations about Ionis students !</small></h1>
+        </div>
+        <h2>Introduction</h2>
+
+	<br />
+	<p>
+	  A simple web service to get informations about Ionis Students.
+	</p>
+	
+	<p>
+	  Informations about students are confidential, so you can get them only
+	  if you have a login and a PPP password registered in a Ionis School.
+	</p>
+	
+	
+        <hr />
+	
+        <h2>Formatting</h2>
+	
+	<p>
+	  This service is available in 4 formats :
+	  <ul>
+	    <li><a href="http://en.wikipedia.org/wiki/INI_file" target="_blank">INI</a><br />
+	      <pre>[action]
+action=get_school
+
+[error]
+error=none
+
+[result]
+login=noel_p
+school=epitech</pre>
+	    </li>
+	    <li><a href="http://en.wikipedia.org/wiki/Json" target="_blank">JSON</a><br />
+	      <pre>{
+  "action"="get_school",
+  "error"="none",
+  "result"=
+  {
+    "login":"noel_p",
+    "school":"epitech"
+  }
+}</pre>
+	    </li>
+	    <li><a href="http://en.wikipedia.org/wiki/Xml" target="_blank">XML</a><br />
+	      <pre>&lt;action&gt;get_school&lt;/action&gt;
+&lt;error&gt;none&lt;/error&gt;
+&lt;result&gt;
+  &lt;login&gt;noel_p&lt;/login&gt;
+  &lt;school&gt;epitech&lt;/school&gt;
+&lt;/result&gt;</pre>
+	    </li>
+	    <li><a href="http://php.net/print_r" target="_blank">PHP</a><br />
+	      <pre>Array
+(
+    [action] => get_school
+    [error] => none
+    [result] => Array
+        (
+            [login] => noel_p
+            [school] => epitech
+        )
+
+)</pre>
+	    </li>
+	  </ul>
+	</p>
+	
+	<p>
+	  Just replace "format" by the format you prefer in your requests.<br />
+	  For example, to get the XML format, replace this :
+	  <code>GET http://ws.paysdu42.fr/<span class="rb">format</span>/?<span class="r">action</span>=get_school&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=noel_p</code>
+	  by this :
+	  <code>GET http://ws.paysdu42.fr/<span class="rb">XML</span>/?<span class="r">action</span>=get_school&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=noel_p</code>
+	</p>
+
+	<p>
+	  The following examples are using INI format because it's shorter and human-readable.
+	  The "action" and the "error" parts are skipped.
+	</p>
+	
+	<hr />
+	<h2>Do some checking ...</h2>
+	<br />
+	<p>
+	  <span class="label">Warning</span> <span class="warning">Your login and your password MUST be provided, or you will get errors for all your request.</span>
+	</p>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3>Check authentification</h3>
+	
+	<p>
+	  Simply check authentification.
+	</p>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"login"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=login&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3</code>
+	
+	<pre>
+[error]
+error=none
+
+[result]
+</pre>
+	
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3>Check if a login exists</h3>
+	
+	<p>
+	  This action check if a login exists.
+	</p>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"is_login"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>login : </b>the ionis login</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>login : </b>the login</li>
+	  <li><b>state : </b>"OK" | "KO"</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=is_login&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=noel_p</code>
+	
+	<pre>
+[result]
+login=noel_p
+state=OK</pre>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3>Check Password</h3>
+	
+	<p>
+	  This action check if the login and the password match.
+	</p>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"check_password"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>login : </b>the ionis login</li>
+	  <li><b>password : </b>the PPP password</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>login : </b>the login</li>
+	  <li><b>state : </b>"OK" | "KO"</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=check_password&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=noel_p&<span class="r">password</span>=dMkT!$tX</code>
+	
+	<pre>
+[result]
+login=noel_p
+state=OK</pre>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<hr />
+	<h2>Get informations!</h2>
+	<br />
+	<p>
+	  <span class="label">Warning</span> <span class="warning">Your login and your password MUST be provided, or you will get errors for all your request.</span>
+	</p>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3>Get login from uid</h3>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_login_from_uid"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>uid : </b>the uid</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>uid : </b>the uid</li>
+	  <li><b>login : </b>the login</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_login_from_uid&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">uid</span>=74695</code>
+	
+	<pre>
+[result]
+uid=74695
+login=lepage_b</pre>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3>Get Uid</h3>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_login_from_uid"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>login : </b>the login</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>login : </b>the login</li>
+	  <li><b>uid : </b>the uid</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_uid&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=noel_p</code>
+	
+	<pre>
+[result]
+login=noel_p
+uid=7055</pre>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3>Get Name</h3>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_login_from_uid"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>login : </b>the login</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>login : </b>the login</li>
+	  <li><b>name : </b>first name and last name</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_name&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
+	
+	<pre>
+[result]
+login=noel_p
+name=Barbara Lepage</pre>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3>Get Group</h3>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_login_from_uid"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>login : </b>the login</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>login : </b>the login</li>
+	  <li><b>group : </b>the group</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_group&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
+	
+	<pre>
+[result]
+login=lepage_b
+group=epitech_2014</pre>
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3>Get School</h3>
+
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_login_from_uid"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>login : </b>the login</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>login : </b>the login</li>
+	  <li><b>school : </b>the school</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_school&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
+
+	<pre>
+[result]
+login=lepage_b
+school=epitech</pre>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3>Get Promo</h3>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_login_from_uid"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>login : </b>the login</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>login : </b>the login</li>
+	  <li><b>promo : </b>the promo</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_promo&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
+	
+	<pre>
+[result]
+login=lepage_b
+promo=2014</pre>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3>Get City</h3>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_login_from_uid"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>login : </b>the login</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>login : </b>the login</li>
+	  <li><b>city : </b>the city</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_city&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
+	
+	<pre>
+[result]
+login=lepage_b
+city=Paris</pre>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3>Get Report Url</h3>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_login_from_uid"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>login : </b>the login</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>login : </b>the login</li>
+	  <li><b>report_url : </b>the report url on the epitech intranet</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_report_url&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
+	
+	<pre>[result]
+login=lepage_b
+report_url=http://www.epitech.eu/intra/index.php?section=etudiant&page=rapport&login=lepage_b</pre>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3>Get Photo Url</h3>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_login_from_uid"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>login : </b>the login</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>login : </b>the login</li>
+	  <li><b>photo_url : </b>the photo url on the epitech intranet</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_photo_url&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
+	
+	<pre>[result]
+login=lepage_b
+photo_url=http://www.epitech.eu/intra/photos/lepage_b.jpg</pre>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3>Get .Plan</h3>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_login_from_uid"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>login : </b>the login</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>login : </b>the login</li>
+	  <li><b>plan : </b>the .plan file in the AFS on public folder</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_plan&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=corfa_u</code>
+	
+	<pre>[result]
+login=corfa_u
+plan=..General
+
+	  Nom:Uriel Corfa
+	  Logincorfa_u
+	  Pseudo:Korfuri
+	  Promo:Epitech 2011
+	  Ville:Paris
+	  UID:71070
+
+..Activites
+
+	  Assistant/Labs:Astek, Koala, ESL
+	  Lieu de travail usuel:Koalab, ESL
+
+..Contact
+
+	  Netsoul:Je ne recois pas les messages ns
+	  Email:uriel@corfa.fr
+	  Jabber/gtalk:korfuri@gmail.com
+	  Tel:06.28.33.53.29
+	  Facebook:/urielcorfa</pre>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+
+	<hr />
+	<h2 id="error">Errors</h2>
+	<br />
+
+	<table>
+	  <tr>
+	    <th>No error</th>
+	    <td><pre>none</pre></td>
+	  </tr>
+	  <tr>
+	    <th>A parameter is missing</th>
+	    <td><pre>missing_parameters</pre></td>
+	  </tr>
+	  <tr>
+	    <th>Action does not exist</th>
+	    <td><pre>unknown_action</pre></td>
+	  </tr>
+	  <tr>
+	    <th>Your login and your password does not match</th>
+	    <td><pre>auth_fail</pre></td>
+	  </tr>
+	</table>
+
+      </div> <!-- /content -->
+
+      <footer>
+        <p>
+	  <br />
+	  Ionis-Users-Informations is developped and maintained by 
+	  <a href="http://db0.fr">Barbara Lepage</a>. It is "protected" by the 
+	  <a href="http://en.wikipedia.org/wiki/WTFPL" target="_blank">WTF Public License</a>.<br />
+	  Please <a href="contact.php">contact me</a> if you have any question about this service
+	  or if you want to be in the "<a href="who.html">Who's using it?</a>" page.<br />
+	  Sources of the project on 
+	  <a href="https://github.com/db0company/Ionis-Users-Informations">GitHub</a>.
+	  Sources of this website are also available on
+	  <a href="https://github.com/db0company/Ionis-Users-Informations-Web-Service">GitHub</a>.
+	  <br />
+	  <br />
+	</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>
