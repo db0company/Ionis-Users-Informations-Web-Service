@@ -146,6 +146,6 @@ function	ws_get_plan($result)
     return ($result);
   $result['result']['login'] = $_GET['login'];
   $result['result']['plan'] = ($iui->getPlan($_GET['login'],
-					     '/var/www/poney/Ionis-Users-Informations/plan'));
+					     'plan'));
   return ($result);
 }
