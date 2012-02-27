@@ -15,3 +15,4 @@ $ionis_unix_password = '2q4xfcc3';
 
 $path_local_files = '.';
 
+$afs = false;
