@@ -38,26 +38,76 @@
 <?php // '
 include_once('../ws/load.php');
 
-if (isset($_POST['login']) && isset($_POST['pass'])
-    && $iui->checkPass($_POST['login'], $_POST['pass']))
-  {
-    if (empty($_POST['infos']))
-      $login = $_POST['login'];
-    else
-      $login = $_POST['infos'];      
-    if (!$iui->isLogin($login))
-      echo '<div class="alert">Unknown login.</div>',
-           '<a href="."><button class="btn">« Back to the form</button></a>';
-    else
-      {
-	echo '
+function	show_gpa($login)
+{
+  global	$iui;
+
+  $gpamod = intval($_POST['gpamodule']);
+  if (($gpamod != 0 && $gpamod < 2007) || $gpamod > intval(@date('Y')))
+    {
+      echo '<div class="alert">Invalid date.</div>',
+	'<a href="."><button class="btn">« Back to the form</button></a>';
+      return ;
+    }
+  echo '<h5>Year : ',($gpamod ? $gpamod.'-'.($gpamod + 1) : 'All'),'</h5>';
+
+  define('INTRA_BETWEEN_TRANSAC', 0.1);
+  define('INTRA_URL_MAIN',                'http://www.epitech.eu/intra/');
+  define('INTRA_USERAGENT',               'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.186 Safari/535.1');
+  $iui->intra_login();
+  if (!$gpamod)
+    {
+      $modules = array();
+      for ($i = 2007; $i < (intval(@date('Y')) - 0); ++$i)
+	{
+	  $gpamod = $i.'-'.($i+1);
+	  $tmp = $iui->fetch_modules($login, $gpamod);
+	  if (!empty($tmp))
+	    $modules = array_merge($tmp, $modules);
+	}
+    }
+  else
+    {
+      $gpamod = $gpamod.'-'.($gpamod + 1);
+      $modules = $iui->fetch_modules($login, $gpamod);
+    }
+  if (!empty($modules))
+    $gpa = $iui->calc_gpa($modules);
+
+  echo '<h3>',$iui->getName($login),', your GPA is : ',number_format($gpa, 3),'</h3>';
+
+  if ($_POST['modshow'])
+    {
+      echo '<table class="table table-striped table-bordered table-condensed">';
+      echo '<tr>';
+      echo '<th>Name</th>';
+      echo '<th>Credits</th>';
+      echo '<th>Status</th>';
+      echo '</tr>';
+      foreach ($modules as $module)
+	{
+	  echo '<tr>';
+	  echo '<td>',$module[1],'</td>';
+	  echo '<td>',$module[3],'</td>';
+	  echo '<td>',$module[5],'</td>';
+	  echo '</tr>';
+	}
+      echo '</table>';
+    }
+}
+
+function	show_informations($login)
+{
+  global	$iui;
+
+  echo '
 	  <h3>Informations about : '.$login.'</h3>';
-	if (($photo = $iui->getPhotoUrl($login)) == '')
-	  $photo = 'http://www.epitech.eu/intra/photos/no.jpg';
-	  echo '<div class="well" style="float: right;">',
-	    '<a href="',$iui->getReportUrl($login),'" class="thumbnail">',
-	      '<img src="'.$photo.'"/></a></div>';
-	  echo '
+  if (($photo = $iui->getPhotoUrl($login)) == '')
+    $photo = 'http://www.epitech.eu/intra/photos/no.jpg';
+  echo '<div class="well" style="float: right;">',
+    '<a href="',$iui->getReportUrl($login),'" class="thumbnail">',
+    '<img src="'.$photo.'"/></a></div>';
+  echo '
      <div class="exampletab">
       <table class="table table-condensed">
         <tr>
@@ -97,17 +147,17 @@ if (isset($_POST['login']) && isset($_POST['pass'])
      </div>
   <h5>.Plan</h5>
 ';
+  
+  if (($plan = $iui->getPlan($login, 'plan')) != '')
+    echo '<pre>'.$plan.'</pre>';
+  else
+    echo '<div class="alert">.plan file not found</div>';
+  echo '<a href="."><button class="btn">« Back to the form</button></a>';
+}
 
-	if (($plan = $iui->getPlan($login, 'plan')) != '')
-	  echo '<pre>'.$plan.'</pre>';
-	else
-	  echo '<div class="alert">.plan file not found</div>';
-        echo '<a href="."><button class="btn">« Back to the form</button></a>';
-      }
-  }
- else
-   {
-     echo '
+function	show_form()
+{
+  echo '
     <h3>Get Informations about Ionis Users</h3>
     <form method="post">
       <label for="login">My Login </label>
@@ -117,9 +167,41 @@ if (isset($_POST['login']) && isset($_POST['pass'])
       <label for="pass">Informations about user</label>
       <input type="text" name="infos" value="" /><br />
       <input type="submit" value="OK" class="btn" style="margin-left: 480px;" /><br />
+      <h3>Calculate my G.P.A</h3>
+      <p>This feature is verry slow. It takes more than 1 minute to calculate. Use it sparingly.<br />
+         Fill the login and pass from the form above.</p>
+      <input type="checkbox" name="modshow" /> Show modules details<br />
+      <select name="gpamodule">';
+  for ($i = @date('Y') - 1; $i > 2007; --$i)
+    echo '<option value="',$i,'">',$i,'-',($i+1),'</option>'."\n";
+  echo '<option value="0">All</option>
+      </select>
+      <input type="submit" name="gpa" value="Calculate!" class="btn" /><br />
     </form>
 ';
-   }
+}
+
+
+
+if (isset($_POST['login']) && isset($_POST['pass'])
+    && $iui->checkPass($_POST['login'], $_POST['pass']))
+  {
+    $login = $_POST['login'];
+    if (isset($_POST['gpa']))
+      show_gpa($login);
+    else
+      {
+	if (!empty($_POST['infos']))
+	  $login = $_POST['infos'];      
+	if (!$iui->isLogin($login))
+	  echo '<div class="alert">Unknown login.</div>',
+	    '<a href="."><button class="btn">« Back to the form</button></a>';
+	else
+	  show_informations($login);
+      }
+  }
+ else
+   show_form();
 ?>
 
       </div>

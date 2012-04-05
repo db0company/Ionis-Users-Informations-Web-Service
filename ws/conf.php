@@ -11,7 +11,8 @@ $mysql_pass = 'bar';
 $mysql_dbname = 'my_database';
 
 $ionis_login = 'exampl_e';
-$ionis_unix_password = '2q4xfcc3';
+$ionis_pass = '2q4xfcc3';
+$intra_pass = 'Dbtmh/(x';
 
 $path_local_files = '.';
 
