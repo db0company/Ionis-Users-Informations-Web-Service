@@ -16,7 +16,7 @@
     <div class="topbar">
       <div class="fill">
         <div class="container">
-          <a class="brand" href="..">Ionis Users Informations</a>
+          <a class="brand" href="http://ionis-users-informations.paysdu42.fr/">Ionis Users Informations</a>
           <ul class="nav">
             <li><a href="ws.html">Web Service</a></li>
             <li><a href="https://github.com/db0company/Ionis-Users-Informations" target="_blank">Sources on GitHub</a></li>
