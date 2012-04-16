@@ -181,7 +181,8 @@ function	show_form()
 ';
 }
 
-
+if ($_SERVER['SERVER_PORT'] != 443)
+  echo '<a href="https://return.epitech.eu/ws/"><button class="btn" style="float: right;"><img src="img/secure.gif" /> Use HTTPS (Secure)</button></a>';
 
 if (isset($_POST['login']) && isset($_POST['pass'])
     && $iui->checkPass($_POST['login'], $_POST['pass']))
