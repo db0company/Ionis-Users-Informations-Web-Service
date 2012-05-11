@@ -189,7 +189,7 @@ function	show_form()
 }
 
 if ($_SERVER['SERVER_PORT'] != 443)
-  echo '<a href="https://return.epitech.eu/ws/"><button class="btn" style="float: right;"><img src="img/secure.gif" /> Use HTTPS (Secure)</button></a>';
+  echo '<a href="https://return.epitech.eu/ws/site/"><button class="btn" style="float: right;"><img src="img/secure.gif" /> Use HTTPS (Secure)</button></a>';
 if (isset($_SESSION['login']))
   echo '<a href="?logout"><button class="btn" style="float: right;">Logout</button></a>';
 if (isset($_GET['logout']))
