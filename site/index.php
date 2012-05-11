@@ -1,4 +1,6 @@
-
+<?php
+   session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -94,6 +96,7 @@ function	show_gpa($login)
 	}
       echo '</table>';
     }
+  echo '<a href="."><button class="btn">« Back to the form</button></a>';
 }
 
 function	show_informations($login)
@@ -159,17 +162,21 @@ function	show_form()
 {
   echo '
     <h3>Get Informations about Ionis Users</h3>
-    <form method="post">
-      <label for="login">My Login </label>
+    <form method="post">';
+  if (!isset($_SESSION['login']))
+    echo '    <label for="login">My Login </label>
       <input type="text" name="login" value="" /><br />
       <label for="pass">My PPP Pass </label>
-      <input type="password" name="pass" value="" /><br />
-      <label for="pass">Informations about user</label>
+      <input type="password" name="pass" value="" /><br />';
+  echo '      <label for="pass">Informations about user</label>
       <input type="text" name="infos" value="" /><br />
-      <input type="submit" value="OK" class="btn" style="margin-left: 480px;" /><br />
+      <input type="submit" name="info" value="OK" class="btn" style="margin-left: 480px;" /><br />
       <h3>Calculate my G.P.A</h3>
-      <p>This feature is verry slow. It takes more than 1 minute to calculate. Use it sparingly.<br />
-         Fill the login and pass from the form above.</p>
+      <p>This feature is verry slow. It takes more than 1 minute to calculate. Use it sparingly.';
+  if (!isset($_SESSION['login']))
+    echo '<br />
+         Fill the login and pass from the form above.';
+  echo '</p>
       <input type="checkbox" name="modshow" /> Show modules details<br />
       <select name="gpamodule">';
   for ($i = @date('Y') - 1; $i > 2007; --$i)
@@ -183,22 +190,37 @@ function	show_form()
 
 if ($_SERVER['SERVER_PORT'] != 443)
   echo '<a href="https://return.epitech.eu/ws/"><button class="btn" style="float: right;"><img src="img/secure.gif" /> Use HTTPS (Secure)</button></a>';
+if (isset($_SESSION['login']))
+  echo '<a href="?logout"><button class="btn" style="float: right;">Logout</button></a>';
+if (isset($_GET['logout']))
+  unset($_SESSION['login']);
 
-if (isset($_POST['login']) && isset($_POST['pass'])
-    && $iui->checkPass($_POST['login'], $_POST['pass']))
+if (isset($_SESSION['login']) ||
+    (isset($_POST['login']) && isset($_POST['pass'])
+     && $iui->checkPass($_POST['login'], $_POST['pass'])))
   {
-    $login = $_POST['login'];
+    if (!isset($_SESSION['login']))
+      {
+	$login = $_SESSION['login'] = $_POST['login'];
+	$first = true;
+      }
+    $login = $_SESSION['login'];
     if (isset($_POST['gpa']))
       show_gpa($login);
     else
       {
-	if (!empty($_POST['infos']))
-	  $login = $_POST['infos'];      
-	if (!$iui->isLogin($login))
-	  echo '<div class="alert">Unknown login.</div>',
-	    '<a href="."><button class="btn">« Back to the form</button></a>';
+	if (empty($_POST['infos']) && !isset($_POST['info']) && !isset($first))
+	  show_form();
 	else
-	  show_informations($login);
+	  {
+	    if (!empty($_POST['infos']))
+	      $login = $_POST['infos'];
+	    if (!$iui->isLogin($login))
+	      echo '<div class="alert">Unknown login.</div>',
+		'<a href="."><button class="btn">« Back to the form</button></a>';
+	    else
+	      show_informations($login);
+	  }
       }
   }
  else
