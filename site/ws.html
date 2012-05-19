@@ -533,6 +533,49 @@ plan=..General
 
 	<!-- -------------------------------------------------------------------------------- -->
 
+	<h3>Get all informations</h3>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_infos"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>login : </b>the login</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>login : </b>the login</li>
+	  <li><b>uid : </b>the uid</li>
+	  <li><b>name : </b>first name and last name</li>
+	  <li><b>group : </b>the group</li>
+	  <li><b>school : </b>the school</li>
+	  <li><b>promo : </b>the promo</li>
+	  <li><b>city : </b>the city</li>
+	  <li><b>report_url : </b>the report url on the epitech intranet</li>
+	  <li><b>photo_url : </b>the photo url on the epitech intranet</li>
+	  <li><b>plan : </b>the .plan file in the AFS on public folder</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_infos&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
+	
+	<pre>[result]
+login=lepage_b
+uid=74695
+name=Barbara Lepage
+group=epitech_2014
+school=Epitech
+promo=2014
+city=Paris
+report_url=http://www.epitech.eu/intra/index.php?section=etudiant&page=rapport&login=lepage_b
+photo_url=http://www.epitech.eu/intra/photos/lepage_b.jpg
+plan=0 6 . 2 8 . 4 7 . 1 3 . 4 4</pre>
+	
+	<!-- -------------------------------------------------------------------------------- -->
+
 	<h3>Search for user</h3>
 	
 	<h6>Request parameters</h6>
