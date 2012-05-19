@@ -150,6 +150,18 @@ function	ws_get_plan($result)
   return ($result);
 }
 
+function	ws_get_phone($result)
+{
+  global	$iui;
+
+  if (!(check_params($result, array('login'))))
+    return ($result);
+  $result['result']['login'] = $_GET['login'];
+  $result['result']['phone'] = ($iui->getPhone($_GET['login'],
+					       'plan'));
+  return ($result);
+}
+
 function	ws_get_infos($result)
 {
   global	$iui;
@@ -165,8 +177,8 @@ function	ws_get_infos($result)
   $result['result']['city'] = ($iui->getCity($_GET['login']));
   $result['result']['report_url'] = ($iui->getReportUrl($_GET['login']));
   $result['result']['photo_url'] = ($iui->getPhotoUrl($_GET['login']));
-  $result['result']['plan'] = ($iui->getPlan($_GET['login'],
-					     'plan'));
+  $result['result']['plan'] = ($iui->getPlan($_GET['login'], 'plan'));
+  $result['result']['phone'] = ($iui->getPhone($_GET['login'], 'plan'));
   return ($result);
 }
 

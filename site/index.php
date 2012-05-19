@@ -145,6 +145,10 @@ function	show_informations($login)
           <th>Intranet Report</th>
 	  <td><a href="'.$iui->getReportUrl($login).'">link</a></td>
         </tr>
+        <tr>
+          <th>Phone</th>
+	  <td>',$iui->getPhone($login, 'plan'),'</td>
+        </tr>
 
       </table>
      </div>
