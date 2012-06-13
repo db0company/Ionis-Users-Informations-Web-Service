@@ -38,7 +38,7 @@ if (!empty($_POST['content']))
     <title>Ionis-Users-Informations : Get informations about Ionis students :: Contact</title>
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" type="image/x-icon" href="img/fav.ico" /> 
+    <link rel="shortcut icon" type="image/x-icon" href="fav.ico" /> 
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
   </head>
