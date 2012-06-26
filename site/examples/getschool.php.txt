@@ -1,0 +1,45 @@
+<?php
+
+function	get_school($login)
+{
+  $my_login = 'exampl_e';
+  $my_ppp_password = '2q4xfcc3';
+
+  $def_url = 
+  $c = curl_init();
+
+  $url = 'http://ws.paysdu42.fr/INI/?action=get_school&auth_login='.
+    $my_login.'&auth_password='.$my_ppp_password.
+    '&login='.$login;
+
+  curl_setopt($c, CURLOPT_HTTPGET, true);
+  curl_setopt($c, CURLOPT_URL, $url);
+  curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($c, CURLOPT_HEADER, false);
+  curl_setopt($c, CURLOPT_FOLLOWLOCATION, true);
+
+  $output = curl_exec($c);
+
+  if ($output === false)
+    return false;
+
+  $output = parse_ini_string($output, true);
+
+  if (!is_array($output)
+      || !is_array($output['error'])
+      || !($output['error']['error'] === 'none'
+	   || empty($output['error']['error'])))
+    return false;
+
+  $school = $output['result']['school'];
+
+  curl_close($c);
+
+  return ($school);
+}
+
+$school = get_school('lepage_b');
+if (!$school)
+  echo 'school not found'."\n";
+else
+  echo 'lepage_b is in school: '.$school."\n";

@@ -32,23 +32,90 @@
 
       <div class="content">
         <div class="page-header">
-          <h1>Web Service <small>- Get informations about Ionis students !</small></h1>
+          <h1 id="top">Web Service <small>- Get informations about Ionis students !</small></h1>
         </div>
-        <h2>Introduction</h2>
 
+	<!-- -------------------------------------------------------------------------------- -->
+
+        <h2>Introduction</h2>
 	<br />
+
 	<p>
-	  A simple web service to get informations about Ionis Students.
+	  If you want to code your own tool that would need information and want
+	  it to be always up to date, you can use the web service from any language.
+	  It can provide many different data formats and is easily usable.
 	</p>
 	
-	<p>
+	<i>
 	  Informations about students are confidential, so you can get them only
 	  if you have a login and a PPP password registered in a Ionis School.
-	</p>
+	</i>
 	
 	<hr />
 
-        <h2>Formatting</h2>
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<img src="img/iui.png" style="float: right;" />
+        <h2>Summary</h2>
+	<br />
+
+	<ol style="list-style-type: upper-roman;">
+	  <li><a href="#https"><img src="img/secure.gif" /> Using HTTPS</a></li>
+	  <li><a href="#sources"><img src="img/puzzle.png" /> Sources and contributors</a></li>
+	  <li><a href="#formatting">Formatting</a></li>
+	  <li><a href="#check">Do some checking...</a></li>
+	  <li><a href="#get">Get informations!</a></li>
+	  <li><a href="#error">Errors</a></li>
+	  <li><a href="#examples"><img src="img/notes.gif" /> Examples</a></li>
+	</ol>
+
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h2 id="https"><img src="img/secure.gif" /> Using HTTPS</h2>
+	<br />
+
+	<p>
+	  You can use HTTPS (Secure) for your requests.<br />
+	  Just replace <code>http://ws.paysdu42.fr/</code> by <code>https://return.epitech.eu/ws/</code>
+	</p>
+	
+	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h2 id="sources"><img src="img/puzzle.png" /> Sources and contributors</h2>
+	<br />
+	<ul>
+	  <li>
+	    Sources of this Website and this Web Service are available on
+	    <a href="https://github.com/db0company/Ionis-Users-Informations-Web-Service" target="_blank">GitHub</a>.
+	  </li>
+	  <li>
+	    The Web Service is using the PHP Class, also available on
+	    <a href="https://github.com/db0company/Ionis-Users-Informations" target="_blank">GitHub</a>.
+	  </li>
+	</ul>
+	
+	<p>
+	  Feel free to contribute by forking these projects on GitHub and make pull requests.<br />
+	  You can also help us by creating issues for features requests and bugs reports, on GitHub too.
+	</p>
+
+	<p>
+	  <strong>Contributors:</strong>
+	  <a href="http://db0.fr/" target="_blank">db0</a>, 
+	  <a href="http://korfuri.fr/" target="_blank">Korfuri</a>, 
+	  <a href="https://github.com/skorpios" target="_blank">Skorpios</a>.
+	</p>
+
+	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<hr />
+
+        <h2 id="formatting">Formatting</h2>
+	<br />
 	
 	<p>
 	  This service is available in 4 formats :
@@ -112,19 +179,12 @@ school=epitech</pre>
 	  The "action" and the "error" parts are skipped.
 	</p>
 	
-	<!-- -------------------------------------------------------------------------------- -->
+	<span class="up">▲ <a href="#top">Back to top</a></span>
         <hr />
-	
-	<h2><img src="img/secure.gif" /> Using HTTPS</h2>
-	<p>
-	  You can use HTTPS (Secure) for your requests.<br />
-	  Just replace <code>http://ws.paysdu42.fr/</code> by <code>https://return.epitech.eu/ws/</code>
-	</p>
 	
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<hr />
-	<h2>Do some checking ...</h2>
+	<h2 id="check">Do some checking...</h2>
 	<br />
 	<p>
 	  <span class="label">Warning</span> <span class="warning">Your login and your password MUST be provided, or you will get errors for all your request.</span>
@@ -228,8 +288,9 @@ state=OK</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
+	<span class="up">▲ <a href="#top">Back to top</a></span>
 	<hr />
-	<h2>Get informations!</h2>
+	<h2 id="get">Get informations!</h2>
 	<br />
 	<p>
 	  <span class="label">Warning</span> <span class="warning">Your login and your password MUST be provided, or you will get errors for all your request.</span>
@@ -629,10 +690,11 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 2=corfa_u
 3=corfa_z</pre>
 
+	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<hr />
+
 	<!-- -------------------------------------------------------------------------------- -->
 
-
-	<hr />
 	<h2 id="error">Errors</h2>
 	<br />
 
@@ -654,6 +716,52 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	    <td><pre>auth_fail</pre></td>
 	  </tr>
 	</table>
+
+	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h2 id="examples"><img src="img/notes.gif" /> Examples</h2>
+	<br />
+
+	<p>
+	  Here are some examples of usage of this web service in various languages.
+	  If you use a language that is not on this list and want to have an example
+	  or provide your own example, please <a href="contact.php">contact us</a>.
+	</p>
+
+	<br />
+
+	<table>
+	  <tr>
+	    <th>Language</th>
+	    <th>Formatting</th>
+	    <th>Action tested</th>
+	    <th>Method to get page</th>
+	    <th>Download</th>
+	  </tr>
+	  <tr>
+	    <th>PHP</th>
+	    <td>INI</td>
+	    <td>get_school</td>
+	    <td>Curl</td>
+	    <td>
+	      <a href="examples/getschool.php.txt" target="_blank">
+		<button class="btn">
+		  Download this example
+		</button>
+	      </a>
+	    </td>
+	  </tr>
+	</table>
+
+	<br />
+
+	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
 
       </div> <!-- /content -->
 

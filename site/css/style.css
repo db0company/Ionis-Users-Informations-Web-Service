@@ -80,6 +80,10 @@ span.rb {
     font-weight: bold;
 }
 
+th {
+    background: #eee;
+}
+
 .contact {
     width: 100%;
     margin: 4px;
@@ -117,4 +121,26 @@ label {
     border-radius: 4px;
     background-color: #F2DEDE;
     color: #B94A48;
+}
+
+.desc {
+    font-size: 0.8em;
+    display: block;
+    margin-left: 15px;
+}
+
+.desc li {
+    line-height: 1em;
+}
+
+#news {
+    margin-top: -100px;
+}
+
+.up {
+    display: block;
+    text-align: right;
+    font-size: 0.8em;
+    float: right;
+    margin-left: 10px;
 }
