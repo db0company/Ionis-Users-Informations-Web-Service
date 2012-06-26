@@ -5,7 +5,6 @@ function	get_school($login)
   $my_login = 'exampl_e';
   $my_ppp_password = '2q4xfcc3';
 
-  $def_url = 
   $c = curl_init();
 
   $url = 'http://ws.paysdu42.fr/INI/?action=get_school&auth_login='.
@@ -35,7 +34,7 @@ function	get_school($login)
 
   curl_close($c);
 
-  return ($school);
+  return $school;
 }
 
 $school = get_school('lepage_b');
