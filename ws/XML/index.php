@@ -3,20 +3,17 @@
 $format = 'ini';
 include_once('../ws.php');
 
-echo '<action>',
+echo '<?xml version="1.0"?><ws><action>',
   $result['action'],
   '</action>',
-  "\n",
   '<error>',
   $result['error'],
   '</error>',
-  "\n",
-  '<result>',
-  "\n";
+  '<result>';
 
 foreach($result['result'] as $key => $value)
 {
-  echo '  <', $key, '>', $value, '</', $key, '>', "\n";
+  echo '<', $key, '>', $value, '</', $key, '>';
 }
 
-echo  '</result>', "\n";
+echo  '</result></ws>', "\n";
