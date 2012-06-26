@@ -144,3 +144,12 @@ label {
     float: right;
     margin-left: 10px;
 }
+
+.summary {
+    list-style-type: upper-roman;
+}
+
+.summary ul {
+    list-style-type: lower-alpha;
+    font-size: 0.8em;
+}

@@ -59,14 +59,49 @@
         <h2>Summary</h2>
 	<br />
 
-	<ol style="list-style-type: upper-roman;">
+	<ol class="summary">
 	  <li><a href="#https"><img src="img/secure.gif" /> Using HTTPS</a></li>
 	  <li><a href="#sources"><img src="img/puzzle.png" /> Sources and contributors</a></li>
-	  <li><a href="#formatting">Formatting</a></li>
-	  <li><a href="#check">Do some checking...</a></li>
-	  <li><a href="#get">Get informations!</a></li>
+	  <li><a href="#formatting">Formatting</a>
+	    <ul>
+	      <li><a href="#formatting-ini">INI</li>
+	      <li><a href="#formatting-json">JSON</li>
+	      <li><a href="#formatting-xml">XML</li>
+	      <li><a href="#formatting-php">PHP</li>
+	    </ul>
+	  </li>
+	  <li><a href="#check">Do some checking...</a>
+	    <ul>
+	      <li><a href="#check-auth">Check authentification</li>
+	      <li><a href="#check-login">Check if a login exists</li>
+	      <li><a href="#check-pass">Check Password</li>
+	    </ul>
+	  </li>
+	  <li><a href="#get">Get informations!</a>
+	    <ul>
+	      <li><a href="#get-login">Get login from uid</li>
+	      <li><a href="#get-uid">Get Uid</li>
+	      <li><a href="#get-name">Get Name</li>
+	      <li><a href="#get-group">Get Group</li>
+	      <li><a href="#get-school">Get School</li>
+	      <li><a href="#get-promo">Get Promo</li>
+	      <li><a href="#get-city">Get City</li>
+	      <li><a href="#get-report">Get Report Url</li>
+	      <li><a href="#get-photo">Get Photo Url</li>
+	      <li><a href="#get-plan">Get .Plan</li>
+	      <li><a href="#get-phone">Get Phone</li>
+	      <li><a href="#get-infos">Get all informations</li>
+	      <li><a href="#get-search">Search for user</li>
+	    </ul>
+	  </li>
 	  <li><a href="#error">Errors</a></li>
-	  <li><a href="#examples"><img src="img/notes.gif" /> Examples</a></li>
+	  <li><a href="#examples"><img src="img/notes.gif" /> Examples</a>
+	    <ul>
+	      <li><a href="#examples">PHP</li>
+	      <li><a href="#examples">sh</li>
+	      <li><a href="#examples">OCaml</li>
+	    </ul>
+	  </li>
 	</ol>
 
 	<hr />
@@ -192,7 +227,7 @@ school=epitech</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Check authentification</h3>
+	<h3 id="check-auth">Check authentification</h3>
 	
 	<p>
 	  Simply check authentification.
@@ -223,7 +258,7 @@ error=none
 	
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Check if a login exists</h3>
+	<h3 id="check-login">Check if a login exists</h3>
 	
 	<p>
 	  This action check if a login exists.
@@ -255,7 +290,7 @@ state=OK</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Check Password</h3>
+	<h3 id="check-pass">Check Password</h3>
 	
 	<p>
 	  This action check if the login and the password match.
@@ -298,7 +333,7 @@ state=OK</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Get login from uid</h3>
+	<h3 id="get-login">Get login from uid</h3>
 	
 	<h6>Request parameters</h6>
 	<ul>
@@ -326,7 +361,7 @@ login=lepage_b</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Get Uid</h3>
+	<h3 id="get-uid">Get Uid</h3>
 	
 	<h6>Request parameters</h6>
 	<ul>
@@ -354,7 +389,7 @@ uid=7055</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Get Name</h3>
+	<h3 id="get-name">Get Name</h3>
 	
 	<h6>Request parameters</h6>
 	<ul>
@@ -382,7 +417,7 @@ name=Barbara Lepage</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Get Group</h3>
+	<h3 id="get-group">Get Group</h3>
 	
 	<h6>Request parameters</h6>
 	<ul>
@@ -409,7 +444,7 @@ login=lepage_b
 group=epitech_2014</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Get School</h3>
+	<h3 id="get-school">Get School</h3>
 
 	<h6>Request parameters</h6>
 	<ul>
@@ -437,7 +472,7 @@ school=epitech</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Get Promo</h3>
+	<h3 id="get-promo">Get Promo</h3>
 	
 	<h6>Request parameters</h6>
 	<ul>
@@ -465,7 +500,7 @@ promo=2014</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Get City</h3>
+	<h3 id="get-city">Get City</h3>
 	
 	<h6>Request parameters</h6>
 	<ul>
@@ -493,7 +528,7 @@ city=Paris</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Get Report Url</h3>
+	<h3 id="get-report">Get Report Url</h3>
 	
 	<h6>Request parameters</h6>
 	<ul>
@@ -520,7 +555,7 @@ report_url=http://www.epitech.eu/intra/index.php?section=etudiant&page=rapport&l
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Get Photo Url</h3>
+	<h3 id="get-photo">Get Photo Url</h3>
 	
 	<h6>Request parameters</h6>
 	<ul>
@@ -547,7 +582,7 @@ photo_url=http://www.epitech.eu/intra/photos/lepage_b.jpg</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Get .Plan</h3>
+	<h3 id="get-plan">Get .Plan</h3>
 	
 	<h6>Request parameters</h6>
 	<ul>
@@ -594,7 +629,7 @@ plan=..General
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Get Phone</h3>
+	<h3 id="get-phone">Get Phone</h3>
 	
 	<h6>Request parameters</h6>
 	<ul>
@@ -621,7 +656,7 @@ phone=06.28.33.53.29</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Get all informations</h3>
+	<h3 id="get-infos">Get all informations</h3>
 	
 	<h6>Request parameters</h6>
 	<ul>
@@ -665,7 +700,7 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3>Search for user</h3>
+	<h3 id="get-search">Search for user</h3>
 	
 	<h6>Request parameters</h6>
 	<ul>
