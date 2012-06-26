@@ -54,7 +54,7 @@ function	show_gpa($login)
   echo '<h5>Year : ',($gpamod ? $gpamod.'-'.($gpamod + 1) : 'All'),'</h5>';
 
   define('INTRA_BETWEEN_TRANSAC', 0.1);
-  define('INTRA_URL_MAIN',                'http://www.epitech.eu/intra/');
+  define('INTRA_URL_MAIN',                'https://www.epitech.eu/intra/');
   define('INTRA_USERAGENT',               'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.186 Safari/535.1');
   $iui->intra_login();
   if (!$gpamod)
@@ -78,7 +78,7 @@ function	show_gpa($login)
 
   echo '<h3>',$iui->getName($login),', your GPA is : ',number_format($gpa, 3),'</h3>';
 
-  if ($_POST['modshow'])
+  if ($_POST['modshow'] && !empty($modules))
     {
       echo '<table class="table table-striped table-bordered table-condensed">';
       echo '<tr>';
