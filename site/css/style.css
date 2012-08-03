@@ -124,17 +124,13 @@ label {
 }
 
 .desc {
-    font-size: 0.8em;
     display: block;
     margin-left: 15px;
-}
-
-.desc li {
-    line-height: 1em;
+    margin-bottom: 15px;
 }
 
 #news {
-    margin-top: -100px;
+    margin-top: -30px;
 }
 
 .up {
@@ -152,4 +148,11 @@ label {
 .summary ul {
     list-style-type: lower-alpha;
     font-size: 0.8em;
+}
+
+.infotitle {
+    font-style: italic;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    font-weight: normal;
 }
