@@ -196,3 +196,11 @@ function	ws_search($result)
   }
   return ($result);
 }
+
+function	ws_get_logins($result)
+{
+  global	$iui;
+
+  $result['result'] = $iui->getLogins($_GET['school'], $_GET['promo'], $_GET['city']);
+  return ($result);
+}

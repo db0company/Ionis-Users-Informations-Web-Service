@@ -91,7 +91,12 @@
 	      <li><a href="#get-plan">Get .Plan</a></li>
 	      <li><a href="#get-phone">Get Phone</a></li>
 	      <li><a href="#get-infos">Get all informations</a></li>
-	      <li><a href="#get-search">Search for user</a></li>
+	    </ul>
+	  </li>
+	  <li><a href="#search">Search for users</a>
+	    <ul>
+	      <li><a href="#get-search">Search for users by their logins or names</a></li>
+	      <li><a href="#get-logins">Search for users by their promo, city and/or school</a></li>
 	    </ul>
 	  </li>
 	  <li><a href="#error">Errors</a></li>
@@ -700,7 +705,20 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<h3 id="get-search">Search for user</h3>
+	<hr />
+
+	<h2 id="search">Search for users</h2>
+	<br />
+
+	<p>
+	  <span class="label">Warning</span> <span class="warning">Please take into account that
+	    these two requests allow you to get the entire list of logins and it's a huge cost
+	    for our server so use it sparingly.</span>
+	</p>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="get-search">Search for users by their logins or names</h3>
 	
 	<h6>Request parameters</h6>
 	<ul>
@@ -724,6 +742,38 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 1=corfa_a
 2=corfa_u
 3=corfa_z</pre>
+
+	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="get-logins">Search for users by their promo, city and/or school</h3>
+	
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_logins"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>(optionnal) school : </b>the requested school</li>
+	  <li><b>(optionnal) promo : </b>the requested promo</li>
+	  <li><b>(optionnal) city : </b>the requested city</li>
+	</ul>
+	
+	<h6>Answer</h6>
+	<ul>
+	  <li>The list of logins in the requested school, promo and/or city</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+	
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_logins&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">school</span>=epitech&<span class="r">promo</span>=2014&<span class="r">city</span>=marseille</code>
+	
+	<pre>[result]
+1=exampl_e
+2=carame_l
+3=nyanca_t</pre>
 
 	<span class="up">▲ <a href="#top">Back to top</a></span>
 	<hr />
