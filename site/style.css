@@ -1,0 +1,38 @@
+  body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+  }
+  h3, h6 {
+    padding: 2%;
+  }
+  .summary {
+      padding: 1px;
+  }
+  .up {
+      display: block;
+      text-align: right;
+      font-size: 0.8em;
+      float: right;
+      margin-left: 10px;
+  }
+  span.r {
+      color: #FF0000;
+  }
+  code {
+      display: block;
+      padding: 3px 4px;
+      color: #0069D6;
+      margin: 1px;
+      white-space: pre;
+     overflow: auto;
+  }
+  span.rb {
+      color: #FF0000;
+      font-weight: bold;
+  }
+  .warning {
+    color: #F89406;
+  }
+  footer {
+      text-align: center;
+  }

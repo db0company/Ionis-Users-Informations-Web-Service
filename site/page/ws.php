@@ -1,84 +1,37 @@
+<?php
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Ionis-Users-Informations : Get informations about Ionis students :: Web Service</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" type="image/x-icon" href="fav.ico" /> 
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-  </head>
+include_once('include/header.php');
 
-  <body>
+$title = 'Web Service';
+$description = get_description();
+$no_header = true;
 
-    <div class="topbar">
-      <div class="fill">
-        <div class="container">
-          <a class="brand" href="..">Ionis Users Informations</a>
-          <ul class="nav">
-            <li class="active"><a href="ws.html">Web Service</a></li>
-            <li><a href="https://github.com/db0company/Ionis-Users-Informations" target="_blank">Sources on GitHub</a></li>
-            <li><a href="who.html">Who's using it?</a></li>
-            <li><a href=".">Example</a></li>
-            <li><a href="contact.php">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-
-      <div class="content">
-        <div class="page-header">
-          <h1 id="top">Web Service <small>- Get informations about Ionis students !</small></h1>
-        </div>
-
-	<!-- -------------------------------------------------------------------------------- -->
-
-        <h2>Introduction</h2>
-	<br />
-
-	<p>
-	  If you want to code your own tool that would need information and want
-	  it to be always up to date, you can use the web service from any language.
-	  It can provide many different data formats and is easily usable.
-	</p>
-	
-	<i>
-	  Informations about students are confidential, so you can get them only
-	  if you have a login and a PPP password registered in a Ionis School.
-	</i>
-	
-	<hr />
-
-	<!-- -------------------------------------------------------------------------------- -->
-
-	<img src="img/iui.png" style="float: right;" />
-        <h2>Summary</h2>
-	<br />
-
-	<ol class="summary">
+$content ='
+    <div class="row-fluid">
+      <div class="span4">
+	<ul class="nav nav-tabs nav-stacked">
 	  <li><a href="#https"><img src="img/secure.gif" /> Using HTTPS</a></li>
 	  <li><a href="#sources"><img src="img/puzzle.png" /> Sources and contributors</a></li>
-	  <li><a href="#formatting">Formatting</a>
-	    <ul>
+	  <li><a href="#formatting">Formatting</a></li>
+	  <li class="well summary">
+	    <ul class="nav nav-list">
 	      <li><a href="#formatting-ini">INI</a></li>
 	      <li><a href="#formatting-json">JSON</a></li>
 	      <li><a href="#formatting-xml">XML</a></li>
 	      <li><a href="#formatting-php">PHP</a></li>
 	    </ul>
 	  </li>
-	  <li><a href="#check">Do some checking...</a>
-	    <ul>
+	  <li><a href="#check">Do some checking...</a></li>
+	  <li class="well summary">
+	    <ul class="nav nav-list">
 	      <li><a href="#check-auth">Check authentification</a></li>
 	      <li><a href="#check-login">Check if a login exists</a></li>
 	      <li><a href="#check-pass">Check Password</a></li>
 	    </ul>
 	  </li>
-	  <li><a href="#get">Get informations!</a>
-	    <ul>
+	  <li><a href="#get">Get informations!</a></li>
+	  <li class="well summary">
+	    <ul class="nav nav-list">
 	      <li><a href="#get-login">Get login from uid</a></li>
 	      <li><a href="#get-uid">Get Uid</a></li>
 	      <li><a href="#get-name">Get Name</a></li>
@@ -93,23 +46,49 @@
 	      <li><a href="#get-infos">Get all informations</a></li>
 	    </ul>
 	  </li>
-	  <li><a href="#search">Search for users</a>
-	    <ul>
+	  <li><a href="#search">Search for users</a></li>
+	  <li class="well summary">
+	    <ul class="nav nav-list">
 	      <li><a href="#get-search">Search for users by their logins or names</a></li>
 	      <li><a href="#get-logins">Search for users by their promo, city and/or school</a></li>
 	    </ul>
 	  </li>
 	  <li><a href="#error">Errors</a></li>
-	  <li><a href="#examples"><img src="img/notes.gif" /> Examples</a>
-	    <ul>
+	  <li><a href="#examples"><img src="img/notes.gif" /> Examples</a></li>
+	  <li class="well summary">
+	    <ul class="nav nav-list">
 	      <li><a href="#examples">PHP</a></li>
 	      <li><a href="#examples">sh</a></li>
 	      <li><a href="#examples">OCaml</a></li>
 	    </ul>
 	  </li>
-	</ol>
+	</ul>
+      </div>
+      <div class="span8">
+	<!-- -------------------------------------------------------------------------------- -->
 
+	<div class="row-fluid">
+	  <div class="span8">
+            <h2>Introduction</h2>
+	    <br />
+	    <p>
+	      If you want to code your own tool that would need information and want
+	      it to be always up to date, you can use the web service from any language.
+	      It can provide many different data formats and is easily usable.
+	    </p>
+	    
+	    <i>
+	      Informations about students are confidential, so you can get them only
+	      if you have a login and a PPP password registered in a Ionis School.
+	    </i>
+	  </div>
+	  <div class="span4">
+	    <img src="img/logo_iui.png" style="float: right;" />
+	  </div>
+	</div>
 	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
 
 	<!-- -------------------------------------------------------------------------------- -->
 
@@ -215,7 +194,7 @@ school=epitech</pre>
 	</p>
 
 	<p>
-	  The following examples are using INI format because it's shorter and human-readable.
+	  The following examples are using INI format because it\'s shorter and human-readable.
 	  The "action" and the "error" parts are skipped.
 	</p>
 	
@@ -227,7 +206,7 @@ school=epitech</pre>
 	<h2 id="check">Do some checking...</h2>
 	<br />
 	<p>
-	  <span class="label">Warning</span> <span class="warning">Your login and your password MUST be provided, or you will get errors for all your request.</span>
+	  <span class="label label-warning">Warning</span> <span class="warning">Your login and your password MUST be provided, or you will get errors for all your request.</span>
 	</p>
 
 	<!-- -------------------------------------------------------------------------------- -->
@@ -333,7 +312,7 @@ state=OK</pre>
 	<h2 id="get">Get informations!</h2>
 	<br />
 	<p>
-	  <span class="label">Warning</span> <span class="warning">Your login and your password MUST be provided, or you will get errors for all your request.</span>
+	  <span class="label label-warning">Warning</span> <span class="warning">Your login and your password MUST be provided, or you will get errors for all your request.</span>
 	</p>
 
 	<!-- -------------------------------------------------------------------------------- -->
@@ -417,7 +396,7 @@ uid=7055</pre>
 	
 	<pre>
 [result]
-login=noel_p
+login=lepage_b
 name=Barbara Lepage</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
@@ -613,7 +592,7 @@ login=corfa_u
 plan=..General
 
 	  Nom:Uriel Corfa
-	  Logincorfa_u
+	  Login:corfa_u
 	  Pseudo:Korfuri
 	  Promo:Epitech 2011
 	  Ville:Paris
@@ -627,10 +606,8 @@ plan=..General
 ..Contact
 
 	  Netsoul:Je ne recois pas les messages ns
-	  Email:uriel@corfa.fr
-	  Jabber/gtalk:korfuri@gmail.com
 	  Tel:06.28.33.53.29
-	  Facebook:/urielcorfa</pre>
+</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
@@ -711,8 +688,8 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	<br />
 
 	<p>
-	  <span class="label">Warning</span> <span class="warning">Please take into account that
-	    these two requests allow you to get the entire list of logins and it's a huge cost
+	  <span class="label label-warning">Warning</span> <span class="warning">Please take into account that
+	    these two requests allow you to get the entire list of logins and it\'s a huge cost
 	    for our server so use it sparingly.</span>
 	</p>
 
@@ -783,23 +760,25 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	<h2 id="error">Errors</h2>
 	<br />
 
-	<table>
-	  <tr>
-	    <th>No error</th>
-	    <td><pre>none</pre></td>
-	  </tr>
-	  <tr>
-	    <th>A parameter is missing</th>
-	    <td><pre>missing_parameters</pre></td>
-	  </tr>
-	  <tr>
-	    <th>Action does not exist</th>
-	    <td><pre>unknown_action</pre></td>
-	  </tr>
-	  <tr>
-	    <th>Your login and your password does not match</th>
-	    <td><pre>auth_fail</pre></td>
-	  </tr>
+	<table class="table table-striped table-bordered">
+	  <tbody>
+	    <tr>
+	      <th>No error</th>
+	      <td><pre>none</pre></td>
+	    </tr>
+	    <tr>
+	      <th>A parameter is missing</th>
+	      <td><pre>missing_parameters</pre></td>
+	    </tr>
+	    <tr>
+	      <th>Action does not exist</th>
+	      <td><pre>unknown_action</pre></td>
+	    </tr>
+	    <tr>
+	      <th>Your login and your password does not match</th>
+	      <td><pre>auth_fail</pre></td>
+	    </tr>
+	  </tbody>
 	</table>
 
 	<span class="up">▲ <a href="#top">Back to top</a></span>
@@ -818,82 +797,63 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 
 	<br />
 
-	<table>
-	  <tr>
-	    <th>Language</th>
-	    <th>Formatting</th>
-	    <th>Action tested</th>
-	    <th>Method to get page</th>
-	    <th>Download</th>
-	  </tr>
-	  <tr>
-	    <th>PHP</th>
-	    <td>INI</td>
-	    <td>get_school</td>
-	    <td>Curl</td>
-	    <td>
-	      <a href="examples/getschool.php.txt" target="_blank">
-		<button class="btn">
-		  Download this example
-		</button>
-	      </a>
-	    </td>
-	  </tr>
-	  <tr>
-	    <th>sh</th>
-	    <td>INI</td>
-	    <td>get_promo</td>
-	    <td>wget</td>
-	    <td>
-	      <a href="examples/getpromo.sh" target="_blank">
-		<button class="btn">
-		  Download this example
-		</button>
-	      </a>
-	    </td>
-	  </tr>
-	  <tr>
-	    <th>OCaml</th>
-	    <td>XML</td>
-	    <td>get_name</td>
-	    <td>Curl</td>
-	    <td>
-	      <a href="examples/getname.ml" target="_blank">
-		<button class="btn">
-		  Download this example
-		</button>
-	      </a>
-	    </td>
-	  </tr>
+	<table class="table table-striped table-bordered">
+	  <thead>
+	    <tr>
+	      <th>Language</th>
+	      <th>Formatting</th>
+	      <th>Action tested</th>
+	      <th>Method to get page</th>
+	      <th>Download</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <th>PHP</th>
+	      <td>INI</td>
+	      <td>get_school</td>
+	      <td>Curl</td>
+	      <td>
+		<a href="examples/getschool.php.txt" target="_blank">
+		  <button class="btn">
+		    Download this example
+		  </button>
+		</a>
+	      </td>
+	    </tr>
+	    <tr>
+	      <th>sh</th>
+	      <td>INI</td>
+	      <td>get_promo</td>
+	      <td>wget</td>
+	      <td>
+		<a href="examples/getpromo.sh" target="_blank">
+		  <button class="btn">
+		    Download this example
+		  </button>
+		</a>
+	      </td>
+	    </tr>
+	    <tr>
+	      <th>OCaml</th>
+	      <td>XML</td>
+	      <td>get_name</td>
+	      <td>Curl</td>
+	      <td>
+		<a href="examples/getname.ml" target="_blank">
+		  <button class="btn">
+		    Download this example
+		  </button>
+		</a>
+	      </td>
+	    </tr>
+	  </tbody>
 	</table>
 
 	<br />
 
 	<span class="up">▲ <a href="#top">Back to top</a></span>
 	<hr />
-
-	<!-- -------------------------------------------------------------------------------- -->
-
-      </div> <!-- /content -->
-
-      <footer>
-        <p>
-	  <br />
-	  Ionis-Users-Informations is developped and maintained by 
-	  <a href="http://db0.fr">Barbara Lepage</a>. It is "protected" by the 
-	  <a href="http://en.wikipedia.org/wiki/WTFPL" target="_blank">WTF Public License</a>.<br />
-	  Please <a href="contact.php">contact me</a> if you have any question about this service
-	  or if you want to be in the "<a href="who.html">Who's using it?</a>" page.<br />
-	  Sources of the project on 
-	  <a href="https://github.com/db0company/Ionis-Users-Informations">GitHub</a>.
-	  Sources of this website are also available on
-	  <a href="https://github.com/db0company/Ionis-Users-Informations-Web-Service">GitHub</a>.
-	  <br />
-	  <br />
-	</p>
-      </footer>
-
-    </div> <!-- /container -->
-
-  </body>
-</html>
+</div>
+</div>
+';

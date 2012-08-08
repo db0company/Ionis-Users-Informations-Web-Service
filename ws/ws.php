@@ -56,9 +56,4 @@ function	run_request()
   return ($result);
 }
 
-function	main()
-{
-  return (run_request());
-}
-
-$result = main();
+$result = run_request();

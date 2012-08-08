@@ -1,41 +1,10 @@
+<?php
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Ionis-Users-Informations : Get informations about Ionis students :: Who's using it?</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" type="image/x-icon" href="fav.ico" /> 
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-  </head>
+$title = 'Who\'s using it?';
+$description = 'Some examples of usage of Ionis-Users-Informations';
 
-  <body>
-
-    <div class="topbar">
-      <div class="fill">
-        <div class="container">
-          <a class="brand" href="..">Ionis Users Informations</a>
-          <ul class="nav">
-            <li><a href="ws.html">Web Service</a></li>
-            <li><a href="https://github.com/db0company/Ionis-Users-Informations" target="_blank">Sources on GitHub</a></li>
-            <li class="active"><a href="who.html">Who's using it?</a></li>
-            <li><a href=".">Example</a></li>
-            <li><a href="contact.php">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-
-      <div class="content">
-        <div class="page-header">
-          <h1>Who's using it? <small>- Some examples of usage of Ionis-Users-Informations</small></h1>
-        </div>
-
-	<table>
+$content ='
+	<table class="table table-striped table-bordered">
 	  <tr>
 	    <th>Intranet D&eacute;l&eacute;gu&eacute;s</th>
 	    <td><a href="http://delegues.epitech.eu/" target="_blank"><img src="img/intra.png" /></a></td>
@@ -69,12 +38,12 @@
 	  </tr>
 	  <tr>
 	    <th>return (to_life);<br />
-	      <i></* The student's Portal*/</i></th>
+	      <i></* The student\'s Portal*/</i></th>
 	    <td><a href="http://return.epitech.eu/" target="_blank"><img src="img/porta.png" /></a></td>
 	    <td>Internal School Newspaper. By students, for students. Freedom of speech.</td>
 	  </tr>
 	  <tr>
-	    <th>Don't Panic!</th>
+	    <th>Don\'t Panic!</th>
 	    <td><a href="http://dontpanic.paysdu42.fr/" target="_blank"><img src="img/dontp.png" /></a></td>
 	    <td>Provide useful products for sale to students for intensive study periods, and organize activities and events around the novel H2G2 and Anglo-Saxon culture in general.</td>
 	  </tr>
@@ -83,28 +52,11 @@
 	    <td><a href="http://astek.paysdu42.fr/" target="_blank"><img src="img/astk.png" /></a></td>
 	    <td>C Intense period videos subtitled.</td>
 	  </tr>
+	  <tr>
+	    <th>Lateb.org/bite</th>
+	    <td><a href="http://lateb.org/bite/" target="_blank"><img src="img/lateb.png" /></a></td>
+	    <td>Lateb is an association on Ionis campus. Their members page is using our service.</td>
+	  </tr>
 	</table>
+';
 
-      </div> <!-- /content -->
-
-      <footer>
-        <p>
-	  <br />
-	  Ionis-Users-Informations is developped and maintained by 
-	  <a href="http://db0.fr">Barbara Lepage</a>. It is "protected" by the 
-	  <a href="http://en.wikipedia.org/wiki/WTFPL" target="_blank">WTF Public License</a>.<br />
-	  Please <a href="contact.php">contact me</a> if you have any question about this service
-	  or if you want to be in the "<a href="who.html">Who's using it?</a>" page.<br />
-	  Sources of the project on 
-	  <a href="https://github.com/db0company/Ionis-Users-Informations">GitHub</a>.
-	  Sources of this website are also available on
-	  <a href="https://github.com/db0company/Ionis-Users-Informations-Web-Service">GitHub</a>.
-	  <br />
-	  <br />
-	</p>
-      </footer>
-
-    </div> <!-- /container -->
-
-  </body>
-</html>
