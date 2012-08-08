@@ -13,7 +13,7 @@ $ionisusersinformations_path = 'ionisinfo.class.php';
 
 $ionis_login = 'exampl_e';
 $ionis_unix_password = '2q4xfcc3';
-$intra_ppp_pass = 'Dbtmh/(x';
+$ionis_ppp_pass = 'Dbtmh/(x';
 
 $absolute_path_local_files = '.';
 
