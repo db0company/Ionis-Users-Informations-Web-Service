@@ -18,7 +18,7 @@ function	menu_popout($element) {
 
 function	get_menu() {
   return array(
-	       'peuple' => array('« Peuple »', 'peuple', false, false),
+	       'peuple' => array('« Peuple »', 'peuple', true, false),
 	       'ws' => array('Web Service', 'ws', true, false),
 	       'php' => array('PHP Class', 'https://github.com/db0company/Ionis-Users-Informations', false, true),
 	       'who' => array('Who\'s using it?', 'who', true, false),
