@@ -2,6 +2,7 @@
 
 $title = '« Peuple »';
 $description = 'The human-usable version of Ionis-Users-Informations';
+$no_header = false;
 
 include_once('../ws/load.php');
 

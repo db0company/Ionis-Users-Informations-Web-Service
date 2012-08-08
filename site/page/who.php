@@ -2,6 +2,7 @@
 
 $title = 'Who\'s using it?';
 $description = 'Some examples of usage of Ionis-Users-Informations';
+$no_header = false;
 
 $content ='
 	<table class="table table-striped table-bordered">

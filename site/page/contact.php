@@ -2,6 +2,7 @@
 
 $title = 'Contact me';
 $description = 'If you have any question or if you want to be in the "Who\'s using it?" page';
+$no_header = false;
 
 include_once('Mail.php');
 
