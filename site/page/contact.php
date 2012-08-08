@@ -32,8 +32,12 @@ function validformsendmail() {
       $mail_object =& Mail::factory('sendmail', $params);
       
       $mail_object->send($headers['To'], $headers, $content);
+
+      echo 'Mail sent!';
     }
 }
+
+validformsendmail();
 
 $content ='
            <div class="row-fluid">
