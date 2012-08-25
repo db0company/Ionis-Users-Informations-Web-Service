@@ -1,13 +1,19 @@
 <?php
 
 $newsfeed = array(
+	      '2012-08-25' => 'The JSON display in the web service was not valid. Now, it is.</br />
+» <a href="https://github.com/db0company/Ionis-Users-Informations-Web-Service/commit/4be580e74c9a3959b0d5436c2ff75553db372b99"
+     target="_blank">Details of the commit</a>',
+
+	      '2012-08-24' => 'The website has been completely redone. It is prettier and now offers an RSS feed.',
+
 	      '2012-08-03' => 'A new function is joining the family! Yeay!<br />
 Let me introduce you <b><a href="site/ws.html#get-logins">get_logins</a></b>. This function search and return logins using 3 optionnal parameters: school, promo and city.<br />
 	 <br />
 	 I hope you will enjoy it! Don\'t forget that we love contributions (by forking these projects on
 	 <a href="https://github.com/db0company/Ionis-Users-Informations">GitHub</a> and make pull requests or by creating issues for features
 	 requests and bugs reports).',
-	      
+
 	      '2012-08-02' => 'The INI format is now using quotes for every fields. If you were parsing it by hand (which is bad ಠ_ಠ), you must change your code.',
 	      
 	      '2012-06-26' => 'XML format in Web Service was invalid. Now it is correctly formatted with a header and a global tag.',
