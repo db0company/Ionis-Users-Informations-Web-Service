@@ -53,6 +53,14 @@ $content ='
 	      <li><a href="#get-logins">Search for users by their promo, city and/or school</a></li>
 	    </ul>
 	  </li>
+	  <li><a href="#global">Get global informations</a></li>
+	  <li class="well summary">
+	    <ul class="nav nav-list">
+	      <li><a href="#get-schools">Get schools</a></li>
+	      <li><a href="#get-cities">Get Cities</a></li>
+	      <li><a href="#get-promos">Get Promos</a></li>
+	    </ul>
+	  </li>
 	  <li><a href="#error">Errors</a></li>
 	  <li><a href="#examples"><img src="img/notes.gif" /> Examples</a></li>
 	  <li class="well summary">
@@ -76,7 +84,7 @@ $content ='
 	      it to be always up to date, you can use the web service from any language.
 	      It can provide many different data formats and is easily usable.
 	    </p>
-	    
+
 	    <i>
 	      Informations about students are confidential, so you can get them only
 	      if you have a login and a PPP password registered in a Ionis School.
@@ -99,7 +107,7 @@ $content ='
 	  You can use HTTPS (Secure) for your requests.<br />
 	  Just replace <code>http://ws.paysdu42.fr/</code> by <code>https://return.epitech.eu/ws/</code>
 	</p>
-	
+
 	<span class="up">▲ <a href="#top">Back to top</a></span>
 	<hr />
 
@@ -117,7 +125,7 @@ $content ='
 	    <a href="https://github.com/db0company/Ionis-Users-Informations" target="_blank">GitHub</a>.
 	  </li>
 	</ul>
-	
+
 	<p>
 	  Feel free to contribute by forking these projects on GitHub and make pull requests.<br />
 	  You can also help us by creating issues for features requests and bugs reports, on GitHub too.
@@ -125,8 +133,8 @@ $content ='
 
 	<p>
 	  <strong>Contributors:</strong>
-	  <a href="http://db0.fr/" target="_blank">db0</a>, 
-	  <a href="http://korfuri.fr/" target="_blank">Korfuri</a>, 
+	  <a href="http://db0.fr/" target="_blank">db0</a>,
+	  <a href="http://korfuri.fr/" target="_blank">Korfuri</a>,
 	  <a href="https://github.com/skorpios" target="_blank">Skorpios</a>.
 	</p>
 
@@ -135,7 +143,7 @@ $content ='
 
         <h2 id="formatting">Formatting</h2>
 	<br />
-	
+
 	<p>
 	  This service is available in 4 formats :
 	  <ul>
@@ -184,7 +192,7 @@ school=epitech</pre>
 	    </li>
 	  </ul>
 	</p>
-	
+
 	<p>
 	  Just replace "format" by the format you prefer in your requests.<br />
 	  For example, to get the XML format, replace this :
@@ -197,10 +205,10 @@ school=epitech</pre>
 	  The following examples are using INI format because it\'s shorter and human-readable.
 	  The "action" and the "error" parts are skipped.
 	</p>
-	
+
 	<span class="up">▲ <a href="#top">Back to top</a></span>
         <hr />
-	
+
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h2 id="check">Do some checking...</h2>
@@ -212,18 +220,18 @@ school=epitech</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="check-auth">Check authentification</h3>
-	
+
 	<p>
 	  Simply check authentification.
 	</p>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"login"</li>
 	  <li><b>auth_login : </b>your ionis login</li>
 	  <li><b>auth_password : </b>your PPP password</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
@@ -232,22 +240,22 @@ school=epitech</pre>
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=login&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3</code>
-	
+
 	<pre>
 [error]
 error=none
 
 [result]
 </pre>
-	
+
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="check-login">Check if a login exists</h3>
-	
+
 	<p>
 	  This action check if a login exists.
 	</p>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"is_login"</li>
@@ -255,18 +263,18 @@ error=none
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>login : </b>the ionis login</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>login : </b>the login</li>
 	  <li><b>state : </b>"OK" | "KO"</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=is_login&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=noel_p</code>
-	
+
 	<pre>
 [result]
 login=noel_p
@@ -275,11 +283,11 @@ state=OK</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="check-pass">Check Password</h3>
-	
+
 	<p>
 	  This action check if the login and the password match.
 	</p>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"check_password"</li>
@@ -288,18 +296,18 @@ state=OK</pre>
 	  <li><b>login : </b>the ionis login</li>
 	  <li><b>password : </b>the PPP password</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>login : </b>the login</li>
 	  <li><b>state : </b>"OK" | "KO"</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=check_password&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=noel_p&<span class="r">password</span>=dMkT!$tX</code>
-	
+
 	<pre>
 [result]
 login=noel_p
@@ -318,7 +326,7 @@ state=OK</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="get-login">Get login from uid</h3>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"get_login_from_uid"</li>
@@ -326,18 +334,18 @@ state=OK</pre>
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>uid : </b>the uid</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>uid : </b>the uid</li>
 	  <li><b>login : </b>the login</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_login_from_uid&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">uid</span>=74695</code>
-	
+
 	<pre>
 [result]
 uid=74695
@@ -346,7 +354,7 @@ login=lepage_b</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="get-uid">Get Uid</h3>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"get_uid"</li>
@@ -354,18 +362,18 @@ login=lepage_b</pre>
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>login : </b>the login</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>login : </b>the login</li>
 	  <li><b>uid : </b>the uid</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_uid&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=noel_p</code>
-	
+
 	<pre>
 [result]
 login=noel_p
@@ -374,7 +382,7 @@ uid=7055</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="get-name">Get Name</h3>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"get_name"</li>
@@ -382,18 +390,18 @@ uid=7055</pre>
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>login : </b>the login</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>login : </b>the login</li>
 	  <li><b>name : </b>first name and last name</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_name&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
-	
+
 	<pre>
 [result]
 login=lepage_b
@@ -402,7 +410,7 @@ name=Barbara Lepage</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="get-group">Get Group</h3>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"get_group"</li>
@@ -410,18 +418,18 @@ name=Barbara Lepage</pre>
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>login : </b>the login</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>login : </b>the login</li>
 	  <li><b>group : </b>the group</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_group&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
-	
+
 	<pre>
 [result]
 login=lepage_b
@@ -437,14 +445,14 @@ group=epitech_2014</pre>
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>login : </b>the login</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>login : </b>the login</li>
 	  <li><b>school : </b>the school</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_school&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
@@ -457,7 +465,7 @@ school=epitech</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="get-promo">Get Promo</h3>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"get_promo"</li>
@@ -465,18 +473,18 @@ school=epitech</pre>
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>login : </b>the login</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>login : </b>the login</li>
 	  <li><b>promo : </b>the promo</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_promo&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
-	
+
 	<pre>
 [result]
 login=lepage_b
@@ -485,7 +493,7 @@ promo=2014</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="get-city">Get City</h3>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"get_city"</li>
@@ -493,18 +501,18 @@ promo=2014</pre>
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>login : </b>the login</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>login : </b>the login</li>
 	  <li><b>city : </b>the city</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_city&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
-	
+
 	<pre>
 [result]
 login=lepage_b
@@ -513,7 +521,7 @@ city=Paris</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="get-report">Get Report Url</h3>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"get_report_url"</li>
@@ -521,18 +529,18 @@ city=Paris</pre>
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>login : </b>the login</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>login : </b>the login</li>
 	  <li><b>report_url : </b>the report url on the epitech intranet</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_report_url&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
-	
+
 	<pre>[result]
 login=lepage_b
 report_url=http://www.epitech.eu/intra/index.php?section=etudiant&page=rapport&login=lepage_b</pre>
@@ -540,7 +548,7 @@ report_url=http://www.epitech.eu/intra/index.php?section=etudiant&page=rapport&l
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="get-photo">Get Photo Url</h3>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"get_photo_url"</li>
@@ -548,18 +556,18 @@ report_url=http://www.epitech.eu/intra/index.php?section=etudiant&page=rapport&l
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>login : </b>the login</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>login : </b>the login</li>
 	  <li><b>photo_url : </b>the photo url on the epitech intranet</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_photo_url&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
-	
+
 	<pre>[result]
 login=lepage_b
 photo_url=http://www.epitech.eu/intra/photos/lepage_b.jpg</pre>
@@ -567,7 +575,7 @@ photo_url=http://www.epitech.eu/intra/photos/lepage_b.jpg</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="get-plan">Get .Plan</h3>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"get_plan"</li>
@@ -575,18 +583,18 @@ photo_url=http://www.epitech.eu/intra/photos/lepage_b.jpg</pre>
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>login : </b>the login</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>login : </b>the login</li>
 	  <li><b>plan : </b>the .plan file in the AFS on public folder</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_plan&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=corfa_u</code>
-	
+
 	<pre>[result]
 login=corfa_u
 plan=..General
@@ -612,7 +620,7 @@ plan=..General
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="get-phone">Get Phone</h3>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"get_phone"</li>
@@ -620,18 +628,18 @@ plan=..General
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>login : </b>the login</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>login : </b>the login</li>
 	  <li><b>phone : </b>the phone number in the .plan file</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_phone&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=corfa_u</code>
-	
+
 	<pre>[result]
 login=corfa_u
 phone=06.28.33.53.29</pre>
@@ -639,7 +647,7 @@ phone=06.28.33.53.29</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="get-infos">Get all informations</h3>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"get_infos"</li>
@@ -647,7 +655,7 @@ phone=06.28.33.53.29</pre>
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>login : </b>the login</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li><b>login : </b>the login</li>
@@ -663,11 +671,11 @@ phone=06.28.33.53.29</pre>
 	  <li><b>phone : </b>the phone number in the .plan file</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_infos&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
-	
+
 	<pre>[result]
 login=lepage_b
 uid=74695
@@ -679,7 +687,7 @@ city=Paris
 report_url=http://www.epitech.eu/intra/index.php?section=etudiant&page=rapport&login=lepage_b
 photo_url=http://www.epitech.eu/intra/photos/lepage_b.jpg
 plan=06 . 28 . 47 . 13 . 44</pre>
-	
+
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<hr />
@@ -696,7 +704,7 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="get-search">Search for users by their logins or names</h3>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"search"</li>
@@ -704,17 +712,17 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>query : </b>all or part of a login or name</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li>A list of logins matching the given criteria</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=search&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">query</span>=corfa</code>
-	
+
 	<pre>[result]
 1=corfa_a
 2=corfa_u
@@ -726,7 +734,7 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<h3 id="get-logins">Search for users by their promo, city and/or school</h3>
-	
+
 	<h6>Request parameters</h6>
 	<ul>
 	  <li><b>action : </b>"get_logins"</li>
@@ -736,21 +744,127 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	  <li><b>(optionnal) promo : </b>the requested promo</li>
 	  <li><b>(optionnal) city : </b>the requested city</li>
 	</ul>
-	
+
 	<h6>Answer</h6>
 	<ul>
 	  <li>The list of logins in the requested school, promo and/or city</li>
 	  <li><b>error : </b><a href="#error">See error table</a></li>
 	</ul>
-	
+
 	<h6>Example</h6>
 
 	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_logins&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">school</span>=epitech&<span class="r">promo</span>=2014&<span class="r">city</span>=marseille</code>
-	
+
 	<pre>[result]
 1=exampl_e
 2=carame_l
 3=nyanca_t</pre>
+
+	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<hr />
+
+	<h2 id="global">Get global informations</h2>
+	<br />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="get-schools">Get schools</h3>
+
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_schools"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>(optionnal) from_database: </b>Must be <b>0</b> (default), if you want to be sure that these schools exists and are real, <b>1</b> if you want to get them from the database (generated automatically so can be a fake school like "tmp", "old", "guest", "prof-adm"...)</li>
+	</ul>
+
+	<h6>Answer</h6>
+	<ul>
+	  <li>The list of schools</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_schools&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3</code>
+
+	<pre>[result]
+0="isbp"
+1="epitech"
+2="epita"
+3="ionis"
+4="etna"
+5="ipsa"
+6="eart"
+7="supinternet"
+8="web"</pre>
+
+	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="get-cities">Get Cities</h3>
+
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_cities"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>(optionnal) school: </b>optional parameter to select only cities where the given school is and return value is</li>
+	</ul>
+
+	<h6>Answer</h6>
+	<ul>
+	  <li>The list of cities</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_cities&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">school</span>=eart</code>
+
+	<pre>[result]
+0="Paris"
+1="Lyon"
+2="Nantes"
+3="Bordeaux"
+4="Lille"</pre>
+
+	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="get-promos">Get Promos</h3>
+
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_promos"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>(optionnal) school: </b>current promos for the given school (epitech by default)</li>
+	  <li><b>(optionnal) from_database: </b>Must be <b>1</b> if you want to get all promos in the database (the school parameter is ignored). Default = <b>0</b>.</li>
+	</ul>
+
+	<h6>Answer</h6>
+	<ul>
+	  <li>The list of promos</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_promos&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">school</span>=etna</code>
+
+	<pre>[result]
+0="2013"
+1="2014"
+2="2015"</pre>
 
 	<span class="up">▲ <a href="#top">Back to top</a></span>
 	<hr />

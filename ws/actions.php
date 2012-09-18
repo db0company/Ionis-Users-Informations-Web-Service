@@ -204,3 +204,45 @@ function	ws_get_logins($result)
   $result['result'] = $iui->getLogins($_GET['school'], $_GET['promo'], $_GET['city']);
   return ($result);
 }
+
+function	ws_get_schools($result)
+{
+  global	$iui;
+
+  $result['result'] =
+    $iui->getSchools(((isset($_GET['from_database'])
+		       && $_GET['from_database']) ?
+		      true : false));
+  return ($result);
+}
+
+function	ws_get_cities($result)
+{
+  global	$iui;
+
+  if (isset($_GET['school']))
+    $result['result'] = $iui->getCities($_GET['school']);
+  else
+    $result['result'] = $iui->getCities();
+  return ($result);
+}
+
+function	ws_get_promos($result)
+{
+  global	$iui;
+
+  if (isset($_GET['school']))
+    $result['result'] =
+      $iui->getPromos($_GET['school'],
+		      ((isset($_GET['from_database'])
+			&& $_GET['from_database']) ?
+		       true : false));
+  else
+    $result['result'] =
+      $iui->getPromos('epitech',
+		      ((isset($_GET['from_database'])
+			&& $_GET['from_database']) ?
+		       true : false));
+  return ($result);
+}
+

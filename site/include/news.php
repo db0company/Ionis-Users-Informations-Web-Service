@@ -1,6 +1,8 @@
 <?php
 
 $newsfeed = array(
+	      '2012-09-18' => 'On the Web Service and on the PHP Class, you can now get the list of available schools, promos and cities.<br /><a href="http://iui.paysdu42.fr/?ws#global">» Doc</a>',
+
 	      '2012-08-25' => 'The JSON display in the web service was not valid. Now, it is.</br />
 » <a href="https://github.com/db0company/Ionis-Users-Informations-Web-Service/commit/4be580e74c9a3959b0d5436c2ff75553db372b99"
      target="_blank">Details of the commit</a>',
