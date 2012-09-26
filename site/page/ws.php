@@ -555,6 +555,7 @@ report_url=http://www.epitech.eu/intra/index.php?section=etudiant&page=rapport&l
 	  <li><b>auth_login : </b>your ionis login</li>
 	  <li><b>auth_password : </b>your PPP password</li>
 	  <li><b>login : </b>the login</li>
+	  <li><b>(optional) https: </b>Must be <b>1</b> if you want a secure url (https). Default = <b>0</b>.</li>
 	</ul>
 
 	<h6>Answer</h6>
@@ -740,9 +741,9 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	  <li><b>action : </b>"get_logins"</li>
 	  <li><b>auth_login : </b>your ionis login</li>
 	  <li><b>auth_password : </b>your PPP password</li>
-	  <li><b>(optionnal) school : </b>the requested school</li>
-	  <li><b>(optionnal) promo : </b>the requested promo</li>
-	  <li><b>(optionnal) city : </b>the requested city</li>
+	  <li><b>(optional) school : </b>the requested school</li>
+	  <li><b>(optional) promo : </b>the requested promo</li>
+	  <li><b>(optional) city : </b>the requested city</li>
 	</ul>
 
 	<h6>Answer</h6>
@@ -779,7 +780,7 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	  <li><b>action : </b>"get_schools"</li>
 	  <li><b>auth_login : </b>your ionis login</li>
 	  <li><b>auth_password : </b>your PPP password</li>
-	  <li><b>(optionnal) from_database: </b>Must be <b>0</b> (default), if you want to be sure that these schools exists and are real, <b>1</b> if you want to get them from the database (generated automatically so can be a fake school like "tmp", "old", "guest", "prof-adm"...)</li>
+	  <li><b>(optional) from_database: </b>Must be <b>0</b> (default), if you want to be sure that these schools exists and are real, <b>1</b> if you want to get them from the database (generated automatically so can be a fake school like "tmp", "old", "guest", "prof-adm"...)</li>
 	</ul>
 
 	<h6>Answer</h6>
@@ -815,7 +816,7 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	  <li><b>action : </b>"get_cities"</li>
 	  <li><b>auth_login : </b>your ionis login</li>
 	  <li><b>auth_password : </b>your PPP password</li>
-	  <li><b>(optionnal) school: </b>optional parameter to select only cities where the given school is and return value is</li>
+	  <li><b>(optional) school: </b>optional parameter to select only cities where the given school is and return value is</li>
 	</ul>
 
 	<h6>Answer</h6>
@@ -847,8 +848,8 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	  <li><b>action : </b>"get_promos"</li>
 	  <li><b>auth_login : </b>your ionis login</li>
 	  <li><b>auth_password : </b>your PPP password</li>
-	  <li><b>(optionnal) school: </b>current promos for the given school (epitech by default)</li>
-	  <li><b>(optionnal) from_database: </b>Must be <b>1</b> if you want to get all promos in the database (the school parameter is ignored). Default = <b>0</b>.</li>
+	  <li><b>(optional) school: </b>current promos for the given school (epitech by default)</li>
+	  <li><b>(optional) from_database: </b>Must be <b>1</b> if you want to get all promos in the database (the school parameter is ignored). Default = <b>0</b>.</li>
 	</ul>
 
 	<h6>Answer</h6>

@@ -1,6 +1,9 @@
 <?php
 
 $newsfeed = array(
+
+	      '2012-09-26' => 'You can now get the photo URL with https. Available both on <a href="https://github.com/db0company/Ionis-Users-Informations#get-photos" target="_blank">IUI PHP Class</a> and <a href="http://iui.paysdu42.fr/?ws#get-photo">Web-service</a>.',
+
 	      '2012-09-18' => 'On the Web Service and on the PHP Class, you can now get the list of available schools, promos and cities.<br /><a href="http://iui.paysdu42.fr/?ws#global">» Doc</a>',
 
 	      '2012-08-25' => 'The JSON display in the web service was not valid. Now, it is.</br />

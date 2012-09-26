@@ -140,10 +140,12 @@ function	ws_get_photo_url($result)
 {
   global	$iui;
 
-  if (!(check_params($result, array('login'))))
+  default_params(array('https' => false));
+  if (!(check_params($result, array('login', 'https'))))
     return ($result);
   $result['result']['login'] = $_GET['login'];
-  $result['result']['photo_url'] = ($iui->getPhotoUrl($_GET['login']));
+  $result['result']['photo_url'] = ($iui->getPhotoUrl($_GET['login'],
+						      $_GET['https']));
   return ($result);
 }
 
