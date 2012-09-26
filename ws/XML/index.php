@@ -3,17 +3,28 @@
 $format = 'ini';
 include_once('../ws.php');
 
-echo '<?xml version="1.0"?><ws><action>',
-  $result['action'],
-  '</action>',
-  '<error>',
-  $result['error'],
-  '</error>',
-  '<result>';
-
-foreach($result['result'] as $key => $value)
-{
-  echo '<', $key, '>', $value, '</', $key, '>';
+function	spaces($nb) {
+  for ($i = 0; $i < $nb; $i++)
+    echo '  ';
 }
 
-echo  '</result></ws>', "\n";
+function	display_xml_result($name, $tree, $depth) {
+  spaces($depth);
+  if (is_array($tree) && empty($tree))
+    echo '<'.$name.' />'."\n";
+  else {
+    echo '<'.$name.'>';
+    if (is_array($tree)) {
+      echo "\n";
+      foreach ($tree as $key => $value)
+	display_xml_result($key, $value, $depth + 1);
+      spaces($depth);
+    }
+    else
+      echo $tree;
+    echo '</'.$name.'>'."\n";
+  }
+}
+
+echo '<?xml version="1.0"?>'."\n";
+display_xml_result('ws', array_reverse($result), 0);
