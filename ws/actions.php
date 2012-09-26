@@ -1,5 +1,7 @@
 <?php
 
+include_once('CastManager.class.php');
+
 function	check_params(&$result, $params)
 {
   foreach ($params as $param)
@@ -9,6 +11,13 @@ function	check_params(&$result, $params)
 	return (false);
       }
   return (true);
+}
+
+function	default_params($default_values)
+{
+  foreach ($default_values as $key => $value)
+    if (!isset($_GET[$key]) || empty($_GET[$key]))
+      $_GET[$key] = $value;
 }
 
 function	ws_login($result)
@@ -246,3 +255,40 @@ function	ws_get_promos($result)
   return ($result);
 }
 
+// Take the name of the cast parent, return the tree of childrens
+
+function	ws_get_casts($result)
+{
+  default_params(array('root' => 'root'));
+  if (!(check_params($result, array('root'))))
+    return ($result);
+  $bdd = cast_bdd();
+  $casts = new CastManager($bdd, $_GET['root']);
+  $result['result'] = $casts->getCastsArray();
+  return $result;
+}
+
+function	ws_get_casts_tree($result)
+{
+  global $format;
+  if ($format == 'ini')
+    return ws_get_casts($result);
+
+  default_params(array('root' => 'root'));
+  if (!(check_params($result, array('root'))))
+    return ($result);
+  $bdd = cast_bdd();
+  $casts = new CastManager($bdd, $_GET['root']);
+  $result['result'] = $casts->getSimpleTree();
+  return $result;
+}
+
+function	ws_get_cast_members($result)
+{
+  if (!(check_params($result, array('cast'))))
+    return ($result);
+  $bdd = cast_bdd();
+  $casts = new CastManager($bdd, $_GET['cast'], false);
+  $result['result'] = $casts->getCastMembers($_GET['cast']);
+  return $result;
+}
