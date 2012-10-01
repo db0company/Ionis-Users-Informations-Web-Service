@@ -14,7 +14,7 @@ function	display_header($current_page = 0) {
   $title = get_title();
   $short_description = get_description();
   $description = 'Ionis-Users-Informations is a service made by students for'
-    .'students to get informations about all the people at Ionis Institute of Technology';
+    .' students to get informations about all the people at Ionis Institute of Technology';
   $author = 'Made by db0 :: http://db0.fr/ :: db0company@gmail.com';
   $menu = get_menu();
   echo '<!DOCTYPE html>
@@ -41,7 +41,9 @@ function	display_header($current_page = 0) {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href=".">', $title, '</a>
+          <a class="brand" href="',
+    (($_SERVER["SERVER_NAME"] == 'peuple.paysdu42.fr') ? 'http://iui.paysdu42.fr/' : '.'),
+    '">', $title, '</a>
           <div class="nav-collapse">
             <ul class="nav">';
   foreach ($menu as $elem) {
