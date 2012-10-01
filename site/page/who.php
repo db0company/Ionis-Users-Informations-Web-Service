@@ -21,6 +21,12 @@ $content ='
 	    </td>
 	  </tr>
 	  <tr>
+	    <th>Google Student Ambassador Epitech Bordeaux</th>
+	    <td><a href="http://quentin-dommerc.fr/signup" target="_blank"><img src="img/googlestudentambassador.png" /></a></td>
+	    <td>The Google Student Ambassador Program is an opportunity for students to act as liaisons between Google and their universities.
+	    </td>
+	  </tr>
+	  <tr>
 	    <th>IHK</th>
 	    <td><a href="http://ihk.koalab.epitech.eu/" target="_blank"><img src="img/ihk.png" /></a></td>
 	    <td>IHK ("Interface Homme Koalas") is an educational intranet used by the group of assistants "Koalas" ("Kind Of Advanced Langage Assistants").
