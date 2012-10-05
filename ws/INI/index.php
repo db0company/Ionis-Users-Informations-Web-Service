@@ -18,8 +18,7 @@ echo '[action]',
   '[result]',
   "\n";
 
-foreach($result['result'] as $key => $value)
-{
-  echo $key,'="',$value,"\"\n";
-}
+if (!empty($result['result']))
+  foreach($result['result'] as $key => $value)
+    echo $key,'="',$value,"\"\n";
 
