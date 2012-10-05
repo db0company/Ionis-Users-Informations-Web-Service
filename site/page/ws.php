@@ -8,12 +8,17 @@ $no_header = true;
 
 $content ='
     <div class="row-fluid">
-      <div class="span4">
-	<ul class="nav nav-tabs nav-stacked">
+      <div class="span3">
+	<ul class="nav nav-tabs nav-stacked" style="position: fixed; width: 23.076923076923077%;">
+	  <li><a href="#introduction"><img src="img/iui_fav.png" /> Introduction</a></li>
 	  <li><a href="#https"><img src="img/secure.gif" /> Using HTTPS</a></li>
 	  <li><a href="#sources"><img src="img/puzzle.png" /> Sources and contributors</a></li>
-	  <li><a href="#formatting">Formatting</a></li>
-	  <li class="well summary">
+	  <li>
+	    <a href="#" onClick="show(\'menu-formatting\');"><i class="icon-align-left"></i> Formatting
+	      <i class="icon-chevron-down pull-right" onClick="jumpToAnchor(\'formatting\'); return (false);"></i>
+	    </a>
+	    </li>
+	  <li class="well summary" id="menu-formatting">
 	    <ul class="nav nav-list">
 	      <li><a href="#formatting-ini">INI</a></li>
 	      <li><a href="#formatting-json">JSON</a></li>
@@ -21,16 +26,20 @@ $content ='
 	      <li><a href="#formatting-php">PHP</a></li>
 	    </ul>
 	  </li>
-	  <li><a href="#check">Do some checking...</a></li>
-	  <li class="well summary">
+	  <li><a href="#" onClick="show(\'menu-check\');"><i class="icon-question-sign"></i> Do some checking...
+	      <i class="icon-chevron-down pull-right" onClick="jumpToAnchor(\'check\'); return (false);"></i>
+	  </a></li>
+	  <li class="well summary" id="menu-check">
 	    <ul class="nav nav-list">
 	      <li><a href="#check-auth">Check authentification</a></li>
 	      <li><a href="#check-login">Check if a login exists</a></li>
 	      <li><a href="#check-pass">Check Password</a></li>
 	    </ul>
 	  </li>
-	  <li><a href="#get">Get informations!</a></li>
-	  <li class="well summary">
+	  <li><a href="#" onClick="show(\'menu-get\');"><i class="icon-user"></i> Get informations!
+	      <i class="icon-chevron-down pull-right" onClick="jumpToAnchor(\'get\'); return (false);"></i>
+	  </a></li>
+	  <li class="well summary" id="menu-get">
 	    <ul class="nav nav-list">
 	      <li><a href="#get-login">Get login from uid</a></li>
 	      <li><a href="#get-uid">Get Uid</a></li>
@@ -46,24 +55,47 @@ $content ='
 	      <li><a href="#get-infos">Get all informations</a></li>
 	    </ul>
 	  </li>
-	  <li><a href="#search">Search for users</a></li>
-	  <li class="well summary">
+	  <li><a href="#" onClick="show(\'menu-search\');"><i class="icon-search"></i> Search for users
+	      <i class="icon-chevron-down pull-right" onClick="jumpToAnchor(\'search\'); return (false);"></i>
+	  </a></li>
+	  <li class="well summary" id="menu-search">
 	    <ul class="nav nav-list">
 	      <li><a href="#get-search">Search for users by their logins or names</a></li>
 	      <li><a href="#get-logins">Search for users by their promo, city and/or school</a></li>
 	    </ul>
 	  </li>
-	  <li><a href="#global">Get global informations</a></li>
-	  <li class="well summary">
+	  <li><a href="#" onClick="show(\'menu-global\');"><i class="icon-globe"></i> Get global informations
+	      <i class="icon-chevron-down pull-right" onClick="jumpToAnchor(\'global\'); return (false);"></i>
+	  </a></li>
+	  <li class="well summary" id="menu-global">
 	    <ul class="nav nav-list">
 	      <li><a href="#get-schools">Get schools</a></li>
 	      <li><a href="#get-cities">Get Cities</a></li>
 	      <li><a href="#get-promos">Get Promos</a></li>
 	    </ul>
 	  </li>
-	  <li><a href="#error">Errors</a></li>
-	  <li><a href="#examples"><img src="img/notes.gif" /> Examples</a></li>
-	  <li class="well summary">
+	  <li><a href="#" onClick="show(\'menu-casts\');"><img src="img/return.png" /> Casts
+	      <i class="icon-chevron-down pull-right" onClick="jumpToAnchor(\'casts\'); return (false);"></i>
+	  </a></li>
+	  <li class="well summary" id="menu-casts">
+	    <ul class="nav nav-list">
+	      <li><a href="#casts-intro">Introducing Casts</a></li>
+	      <li><a href="#get-casts">Get Casts</a></li>
+	      <li><a href="#get-casts-tree">Get Casts tree</a></li>
+	      <li><a href="#get-cast-members">Get Cast members</a></li>
+	      <li><a href="#get-casts-of-login">Get Casts of login</a></li>
+	      <li><a href="#is-cast">Is Cast?</a></li>
+	      <li><a href="#add-cast">Add Cast</a></li>
+	      <li><a href="#delete-cast">Delete Cast</a></li>
+	      <li><a href="#add-cast-member">Add Cast member</a></li>
+	      <li><a href="#delete-cast-member">Delete Cast member</a></li>
+	    </ul>
+	  </li>
+	  <li><a href="#error"><i class="icon-remove"></i> Errors</a></li>
+	  <li><a href="#" onClick="show(\'menu-examples\');"><img src="img/notes.gif" /> Examples
+	      <i class="icon-chevron-down pull-right" onClick="jumpToAnchor(\'examples\'); return (false);"></i>
+	  </a></li>
+	  <li class="well summary" id="menu-examples">
 	    <ul class="nav nav-list">
 	      <li><a href="#examples">PHP</a></li>
 	      <li><a href="#examples">sh</a></li>
@@ -72,12 +104,12 @@ $content ='
 	  </li>
 	</ul>
       </div>
-      <div class="span8">
+      <div class="span9">
 	<!-- -------------------------------------------------------------------------------- -->
 
 	<div class="row-fluid">
 	  <div class="span8">
-            <h2>Introduction</h2>
+            <h2 id="introduction">Introduction</h2>
 	    <br />
 	    <p>
 	      If you want to code your own tool that would need information and want
@@ -91,7 +123,7 @@ $content ='
 	    </i>
 	  </div>
 	  <div class="span4">
-	    <img src="img/logo_iui.png" style="float: right;" />
+	    <img src="img/logo_iui.png" />
 	  </div>
 	</div>
 	<hr />
@@ -108,7 +140,7 @@ $content ='
 	  Just replace <code>http://ws.paysdu42.fr/</code> by <code>https://return.epitech.eu/ws/</code>
 	</p>
 
-	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
 	<hr />
 
 	<!-- -------------------------------------------------------------------------------- -->
@@ -131,14 +163,15 @@ $content ='
 	  You can also help us by creating issues for features requests and bugs reports, on GitHub too.
 	</p>
 
-	<p>
-	  <strong>Contributors:</strong>
-	  <a href="http://db0.fr/" target="_blank">db0</a>,
-	  <a href="http://korfuri.fr/" target="_blank">Korfuri</a>,
-	  <a href="https://github.com/skorpios" target="_blank">Skorpios</a>.
-	</p>
+	<h5>Contributors:</h5>
+	<ul>
+	  <li><a href="http://db0.fr/" target="_blank">db0</a> (pretty much everything),</li>
+	  <li><a href="http://korfuri.fr/" target="_blank">Korfuri</a> (search function),</li>
+	  <li><a href="https://github.com/skorpios" target="_blank">Lotfi Bentouati</a> (intranet functions, gpa calculator),</li>
+	  <li><a href="https://github.com/Toruk" target="_blank">Toruk</a> (members in casts, bug fix).</li>
+	</ul>
 
-	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
 	<hr />
 
         <h2 id="formatting">Formatting</h2>
@@ -147,7 +180,7 @@ $content ='
 	<p>
 	  This service is available in 4 formats :
 	  <ul>
-	    <li><a href="http://en.wikipedia.org/wiki/INI_file" target="_blank">INI</a><br />
+	    <li id="formatting-ini"><a href="http://en.wikipedia.org/wiki/INI_file" target="_blank">INI</a><br />
 	      <pre>[action]
 action=get_school
 
@@ -158,7 +191,7 @@ error=none
 login=noel_p
 school=epitech</pre>
 	    </li>
-	    <li><a href="http://en.wikipedia.org/wiki/Json" target="_blank">JSON</a><br />
+	    <li id="formatting-json"><a href="http://en.wikipedia.org/wiki/Json" target="_blank">JSON</a><br />
 	      <pre>{
   "action"="get_school",
   "error"="none",
@@ -169,7 +202,7 @@ school=epitech</pre>
   }
 }</pre>
 	    </li>
-	    <li><a href="http://en.wikipedia.org/wiki/Xml" target="_blank">XML</a><br />
+	    <li id="formatting-xml"><a href="http://en.wikipedia.org/wiki/Xml" target="_blank">XML</a><br />
 	      <pre>&lt;action&gt;get_school&lt;/action&gt;
 &lt;error&gt;none&lt;/error&gt;
 &lt;result&gt;
@@ -177,7 +210,7 @@ school=epitech</pre>
   &lt;school&gt;epitech&lt;/school&gt;
 &lt;/result&gt;</pre>
 	    </li>
-	    <li><a href="http://php.net/print_r" target="_blank">PHP</a><br />
+	    <li id="formatting-php"><a href="http://php.net/print_r" target="_blank">PHP</a><br />
 	      <pre>Array
 (
     [action] => get_school
@@ -206,7 +239,7 @@ school=epitech</pre>
 	  The "action" and the "error" parts are skipped.
 	</p>
 
-	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
         <hr />
 
 	<!-- -------------------------------------------------------------------------------- -->
@@ -315,7 +348,7 @@ state=OK</pre>
 
 	<!-- -------------------------------------------------------------------------------- -->
 
-	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
 	<hr />
 	<h2 id="get">Get informations!</h2>
 	<br />
@@ -729,7 +762,7 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 2=corfa_u
 3=corfa_z</pre>
 
-	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
 	<hr />
 
 	<!-- -------------------------------------------------------------------------------- -->
@@ -761,7 +794,7 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 2=carame_l
 3=nyanca_t</pre>
 
-	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
 	<hr />
 
 	<!-- -------------------------------------------------------------------------------- -->
@@ -804,7 +837,7 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 7="supinternet"
 8="web"</pre>
 
-	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
 	<hr />
 
 	<!-- -------------------------------------------------------------------------------- -->
@@ -836,7 +869,7 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 3="Bordeaux"
 4="Lille"</pre>
 
-	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
 	<hr />
 
 	<!-- -------------------------------------------------------------------------------- -->
@@ -867,7 +900,349 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 1="2014"
 2="2015"</pre>
 
-	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<hr />
+
+	<h2 id="casts">Casts</h2>
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="casts-intro">Introducing casts</h3>
+
+	<div class="row-fluid">
+	  <div class="span5 well casts_div">
+	    <div class="cast_icon">
+	      <img src="img/tree_casts.png" />
+	    </div>
+	    <p>
+	      People in Ionis, or at leat at Epitech, often have a role. They can be a teacher, director, assistant, member of an association, permanent of a laboratory and many more!
+	    </p>
+	    <p>
+	      These groups are called "<strong>Casts</strong>".</p>
+	    <p>
+	      Casts are represented as a tree with four main nodes:
+	      <button class="button_grey">General</button>,
+	      <button class="button_green">Pedago</button>,
+	      <button class="button_blue">Labo</button> and
+	      <button class="button_orange">Asso</button>.
+	    </p>
+	<!-- To easily browse casts, we recommend that you use the display proposed by return (to_life): http://return.paysdu42.fr/ -->
+	  </div>
+	  <div class="span4 well casts_div">
+	    <div class="cast_icon">
+	      <img src="img/star.png" style="height: 90px;" />
+	    </div>
+            <p>
+	      Being a member of a cast can provide benefits, including managing casts and members thereof.
+	    </p>
+	    <p>
+	      Our Web-Service allows you to retrieve casts, but also add, delete, and manage members.<br />
+	      You must be in the right cast to be able to do it.<br />
+	      However, no specific right is required for a simple recovery.
+	    </p>
+	    <p>
+	      If you think you should have the right to do something, but you don\'t,
+	      please <a href="?contact">contact us</a>.
+	    </p>
+	    </div>
+	  <div class="span3 well casts_div">
+	    <div class="cast_icon">
+	      <img src="img/guarentee.png" style="height: 200px;" />
+	    </div>
+	    <p>
+	      Our database is so far the <strong>safest</strong> and most <strong>up to date</strong> in the campus, at least for Epitech, since we have a moral contract with directors, laboratories and associations.
+	    </p>
+	  </div>
+	</div>
+
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="get-casts">Get Casts</h3>
+
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_casts"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>(optional) root: </b>the root node of casts you want. / by default.</li>
+	</ul>
+
+	<h6>Answer</h6>
+	<ul>
+	  <li>A simple list of all casts. A flatten version of the casts tree.</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+
+	<h6>Example</h6>
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_casts&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">root</span>=Koala_pedago</code>
+
+	<pre>[result]
+0="Koala_pedago"
+1="Koala_Cpp"
+2="Koala_Csharp"
+3="Koala_CSI-UML"
+4="Koala_Java"
+5="Koala_KOOC"
+6="Koala_OCaml"</pre>
+
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+
+	<h3 id="get-casts-tree">Get Casts tree</h3>
+
+	<p>
+	  <span class="label label-warning">Warning</span> <span class="warning">This function is not compatible with the INI format. It will call the action get_casts.</span>
+	</p>
+
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_casts_tree"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>(optional) root: </b>the root node of casts you want. / by default.</li>
+	</ul>
+
+	<h6>Answer</h6>
+	<ul>
+	  <li>A tree representation of casts.</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+
+	<h6>Example <small>(XML)</small></h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_casts&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">root</span>=Koala</code>
+
+	<pre>  &lt;result&gt;
+    &lt;Koala&gt;
+      &lt;Koala_chef /&gt;
+      &lt;Koala_permanents /&gt;
+    &lt;/Koala&gt;
+  &lt;/result&gt;</pre>
+
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="get-cast-members">Get Cast members</h3>
+
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_casts_members"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>cast : </b>the name of the cast of which you want to get the members</li>
+	</ul>
+
+	<h6>Answer</h6>
+	<ul>
+	  <li>The list of cast members</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_cast_members&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">cast</span>=Koala_permanents</code>
+
+	<pre>[result]
+0="benram_s"
+1="delaho_g"
+2="galby_j"</pre>
+
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="get-casts-of-login">Get Casts of login</h3>
+
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"get_casts_of_login"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>login : </b>the login for which you want to know the casts it belongs to</li>
+	</ul>
+
+	<h6>Answer</h6>
+	<ul>
+	  <li>The list of casts</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=get_casts_of_login&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">login</span>=lepage_b</code>
+
+	<pre>[result]
+0="Delegues"
+1="Delegues_Paris"
+2="Delegues_2014"
+3="Koala_OCaml"
+4="ReturnToLife_Admin"
+5="Lateb_Ancien_Bureau"
+6="ESL_Pedago"
+7="DontPanic_Bureau"</pre>
+
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
+	<hr />
+
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="is-cast">Is Cast?</h3>
+
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"is_cast"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>cast : </b>the name of the cast</li>
+	</ul>
+
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>state : </b>"OK" | "KO"</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=is_cast&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">cast</span>=Lateb_Bureau</code>
+
+	<pre>[result]
+state="OK"</pre>
+
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="add-cast">Add Cast</h3>
+
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"add_cast"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>name : </b>the name of the new cast</li>
+	  <li><b>parent : </b>the name of the parent cast of the new cast</li>
+	</ul>
+
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>state : </b>"OK" | "KO"</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=add_cast&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">parent</span>=Labo&<span class="r">name</span>=NouveauLabo</code>
+
+	<pre>[result]
+state="OK"</pre>
+
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="delete-cast">Delete Cast</h3>
+
+	<p>
+	  <span class="label label-warning">Warning</span> <span class="warning">Delete a cast will also delete its sub-casts, members, rights and all other information. This action is irreversible.</span>
+	</p>
+
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"delete_cast"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>cast : </b>the name of the cast you want to delete</li>
+	</ul>
+
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>state : </b>"OK" | "KO"</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=delete_cast&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">cast</span>=NouveauLabo</code>
+
+	<pre>[result]
+state="OK"</pre>
+
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="add-cast-member">Add Cast member</h3>
+
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"add_cast_member"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>cast : </b>the name of the cast</li>
+	  <li><b>login : </b>the login you want to be member of the cast</li>
+	</ul>
+
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>state : </b>"OK" | "KO"</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=add_cast_member&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">cast</span>=Koala_Chef&<span class="r">login</span>=giron_d</code>
+
+	<pre>[result]
+state="OK"</pre>
+
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
+	<hr />
+
+	<!-- -------------------------------------------------------------------------------- -->
+
+	<h3 id="delete-cast-member">Delete Cast member</h3>
+
+	<h6>Request parameters</h6>
+	<ul>
+	  <li><b>action : </b>"delete_cast_member"</li>
+	  <li><b>auth_login : </b>your ionis login</li>
+	  <li><b>auth_password : </b>your PPP password</li>
+	  <li><b>cast : </b>the name of the cast</li>
+	  <li><b>login : </b>the login you want to delete from the cast</li>
+	</ul>
+
+	<h6>Answer</h6>
+	<ul>
+	  <li><b>state : </b>"OK" | "KO"</li>
+	  <li><b>error : </b><a href="#error">See error table</a></li>
+	</ul>
+
+	<h6>Example</h6>
+
+	<code>GET http://ws.paysdu42.fr/format/?<span class="r">action</span>=delete_cast_member&<span class="r">auth_login</span>=exampl_e&<span class="r">auth_password</span>=2q4xfcc3&<span class="r">cast</span>=Astek_Chef&<span class="r">login</span>=revet_c</code>
+
+	<pre>[result]
+state="OK"</pre>
+
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
 	<hr />
 
 	<!-- -------------------------------------------------------------------------------- -->
@@ -896,7 +1271,7 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 	  </tbody>
 	</table>
 
-	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
 	<hr />
 
 	<!-- -------------------------------------------------------------------------------- -->
@@ -967,7 +1342,7 @@ plan=06 . 28 . 47 . 13 . 44</pre>
 
 	<br />
 
-	<span class="up">▲ <a href="#top">Back to top</a></span>
+	<span class="up"><i class="icon-chevron-up"></i> <a href="#top">Back to top</a></span>
 	<hr />
 </div>
 </div>
