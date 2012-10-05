@@ -1,6 +1,6 @@
 <?php
 
-$format = 'ini';
+$format = 'xml';
 include_once('../ws.php');
 
 function	spaces($nb) {
