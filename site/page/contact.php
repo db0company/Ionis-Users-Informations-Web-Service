@@ -40,20 +40,41 @@ function validformsendmail() {
 validformsendmail();
 
 $content ='
-           <div class="row-fluid">
-	     <div class="span4">
-	       <p><img src="img/user.gif" /> Login</p>
-	       <p><img src="img/email.gif" /> E-mail</p>
-	       <p><img src="img/title.gif" /> Object</p>
+           <form method="post" style="width: 50%; margin-left: 22%;">
+             <div class="row-fluid">
+	       <div class="span2">
+		 <p><i class="icon-user"></i> Login</p>
+	       </div>
+	       <div class="span10">
+		 <input style="width: 100%;" type="text" value="" name="login" /><br />
+	       </div>
 	     </div>
-	     <div class="span8">
-	       <form method="post">
-		 <input style="width: 80%;" type="text" value="" name="login" /><br />
-		 <input style="width: 80%;" type="text" value="" name="mail" /><br />
-		 <input style="width: 80%;" type="text" value="" name="object" /><br />
-		 <textarea name="content" class="contact" style="height: 250px; width: 80%;"></textarea>
-		 <div class="right"><input type="submit" class="btn" value="Envoyer" /></div>
-	    </form>
+             <div class="row-fluid">
+	       <div class="span2">
+		 <p><i class="icon-envelope"></i> E-mail</p>
+	       </div>
+	       <div class="span10">
+		 <input style="width: 100%;" type="text" value="" name="mail" /><br />
+	       </div>
 	     </div>
-	   </div>
+             <div class="row-fluid">
+	       <div class="span2">
+		 <p><i class="icon-chevron-right"></i> Object</p>
+	       </div>
+	       <div class="span10">
+		 <input style="width: 100%;" type="text" value="" name="object" /><br />
+	       </div>
+	     </div>
+             <div class="row-fluid">
+	       <div class="span2">
+		 <p><i class="icon-pencil"></i> Content
+	       </div>
+	       <div class="span10">
+		 <textarea name="content" class="contact" style="height: 250px; width: 100%;"></textarea>
+	       </div>
+	     </div>
+	     <div class="row-fluid">
+	       <div class="pull-right"><input type="submit" class="btn btn-large btn-warning" value="Envoyer" /></div>
+	     </div>
+	   </form>
 ';
