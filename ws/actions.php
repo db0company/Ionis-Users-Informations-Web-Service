@@ -257,8 +257,6 @@ function	ws_get_promos($result)
   return ($result);
 }
 
-// Take the name of the cast parent, return the tree of childrens
-
 function	ws_get_casts($result)
 {
   default_params(array('root' => 'root'));
@@ -266,7 +264,11 @@ function	ws_get_casts($result)
     return ($result);
   $bdd = cast_bdd();
   $casts = new CastManager($bdd, $_GET['root']);
-  $result['result'] = $casts->getCastsArray();
+  $casts_array = $casts->getCastsArray();
+  if (!empty($casts_array))
+    foreach ($casts_array as $cast)
+      $casts_names[] = $cast->getName();
+  $result['result'] = $casts_names;
   return $result;
 }
 
@@ -291,6 +293,76 @@ function	ws_get_cast_members($result)
     return ($result);
   $bdd = cast_bdd();
   $casts = new CastManager($bdd, $_GET['cast'], false);
-  $result['result'] = $casts->getCastMembers($_GET['cast']);
+  $cast = $casts->getCast($_GET['cast']);
+  $result['result'] = $cast->getMembers();
+  return $result;
+}
+
+function	ws_get_casts_of_login($result) {
+  if (!(check_params($result, array('login'))))
+    return ($result);
+  $bdd = cast_bdd();
+  $casts = new CastManager($bdd);
+  $casts = $casts->getMemberCasts($_GET['login']);
+  if (!empty($casts))
+    foreach ($casts as $cast)
+      $casts_names[] = $cast->getName();
+  $result['result'] = $casts_names;
+  return $result;
+}
+
+function	ws_is_cast($result) {
+  if (!(check_params($result, array('cast'))))
+    return ($result);
+  $bdd = cast_bdd();
+  $casts = new CastManager($bdd);
+  $result['result']['state'] = ($casts->isCast($_GET['cast']) ? 'OK' : 'KO');
+  return $result;
+}
+
+function	ws_add_cast($result) {
+  if (!(check_params($result, array('parent', 'name'))))
+    return ($result);
+  $bdd = cast_bdd();
+  $casts = new CastManager($bdd);
+  $result['result']['state'] = ($casts->addCast($_GET['auth_login'],
+						$_GET['parent'],
+						$_GET['name']) ?
+				'OK' : 'KO');
+  return $result;
+}
+
+function	ws_delete_cast($result) {
+  if (!(check_params($result, array('cast'))))
+    return ($result);
+  $bdd = cast_bdd();
+  $casts = new CastManager($bdd);
+  $result['result']['state'] = ($casts->deleteCast($_GET['auth_login'],
+						   $_GET['cast']) ?
+				'OK' : 'KO');
+  return $result;
+}
+
+function	ws_add_cast_member($result) {
+  if (!(check_params($result, array('cast', 'login'))))
+    return ($result);
+  $bdd = cast_bdd();
+  $casts = new CastManager($bdd);
+  $result['result']['state'] = ($casts->addCastMember($_GET['auth_login'],
+						      $_GET['cast'],
+						      $_GET['login']) ?
+				'OK' : 'KO');
+  return $result;
+}
+
+function	ws_delete_cast_member($result) {
+  if (!(check_params($result, array('cast', 'login'))))
+    return ($result);
+  $bdd = cast_bdd();
+  $casts = new CastManager($bdd);
+  $result['result']['state'] = ($casts->deleteCastMember($_GET['auth_login'],
+							 $_GET['cast'],
+							 $_GET['login']) ?
+				'OK' : 'KO');
   return $result;
 }
