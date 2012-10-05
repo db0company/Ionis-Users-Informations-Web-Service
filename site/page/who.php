@@ -5,7 +5,7 @@ $description = 'Some examples of usage of Ionis-Users-Informations';
 $no_header = false;
 
 $content ='
-	<table class="table table-striped table-bordered">
+	<table class="table table-striped table-bordered table-hover">
 	  <tr>
 	    <th>Intranet D&eacute;l&eacute;gu&eacute;s</th>
 	    <td><a href="http://delegues.epitech.eu/" target="_blank"><img src="img/intra.png" /></a></td>
@@ -67,3 +67,60 @@ $content ='
 	</table>
 ';
 
+$whosusingit = array (
+		  array('title' => 'Intranet D&eacute;l&eacute;gu&eacute;s',
+			'link' => 'http://delegues.epitech.eu/',
+			'img' => 'img/intra.png',
+			'description' => 'An intranet for all students to contact their representatives and track issues (more than 10 000 lines of code).
+                Events orginizer : Conferences (~50 ppl), Year Group Photo (~250 ppl), and more.
+                Tickets, To-do-list, Polls, Reports, News, ...'),
+		  array('title' => 'MsLab',
+			'link' => 'http://mslab.epitech.eu/',
+			'img' => 'img/mslab.png',
+			'description' => 'Epitech Microsoft Laboratory.'),
+		  array('title' => 'Google Student Ambassador Epitech Bordeaux',
+			'link' => 'http://quentin-dommerc.fr/signup',
+			'img' => 'img/googlestudentambassador.png',
+			'description' => 'The Google Student Ambassador Program is an opportunity for students to act as liaisons between Google and their universities.'),
+		  array('title' => 'IHK',
+			'link' => 'http://ihk.koalab.epitech.eu/',
+			'img' => 'img/ihk.png',
+			'description' => 'IHK ("Interface Homme Koalas") is an educational intranet used by the group of assistants "Koalas" ("Kind Of Advanced Langage Assistants").'),
+		  array('title' => 'Koalas-Rendu',
+			'link' => 'http://koala-rendus.epitech.net/',
+			'img' => 'img/koalas-rendu.png',
+			'description' => 'Koalas-rendus is the system used by koalas to manage students authentification on their SCM repositories.'),
+		  array('title' => 'BiblioTECH',
+			'link' => 'http://bibliotech.epitech.eu/',
+			'img' => 'img/bibli.png',
+			'description' => 'Book-sharing website between laboratories and students in Epitech. Hosted in the Koalab and supported by koalas.'),
+		  array('title' => 'return (to_life);<br /><i>/* The student\'s Portal*/</i>',
+			'link' => 'http://return.epitech.eu/',
+			'img' => 'img/porta.png',
+			'description' => 'Internal School Newspaper. By students, for students. Freedom of speech.'),
+		  array('title' => 'Don\'t Panic!',
+			'link' => 'http://dontpanic.paysdu42.fr/',
+			'img' => 'img/dontp.png',
+			'description' => 'Provide useful products for sale to students for intensive study periods, and organize activities and events around the novel H2G2 and Anglo-Saxon culture in general.'),
+		  array('title' => 'Astek.Paysdu42.fr',
+			'link' => 'http://astek.paysdu42.fr/',
+			'img' => 'img/astk.png',
+			'description' => 'C Intense period videos subtitled.'),
+		  array('title' => 'Lateb.org/bite',
+			'link' => 'http://lateb.org/bite/',
+			'img' => 'img/lateb.png',
+			'description' => 'Lateb is an association on Ionis campus. Their members page is using our service.')
+		  );
+
+
+$content = '	<table class="table table-striped table-bordered table-hover">';
+foreach ($whosusingit as $who) {
+  $content .= '
+	  <tr>
+	    <th><a href="'.$who['link'].'" target="_blank">'.$who['title'].'</a></th>
+	    <td><a href="'.$who['link'].'" target="_blank"><img src="'.$who['img'].'" /></a></td>
+	    <td>'.$who['description'].'</td>
+	  </tr>';
+}
+
+$content .= '</table>';
