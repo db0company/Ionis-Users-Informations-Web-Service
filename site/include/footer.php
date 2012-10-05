@@ -7,13 +7,13 @@ function	display_footer() {
         <p>
 	  <br />
 	  Ionis-Users-Informations is developped and maintained by 
-	  <a href="http://db0.fr">Barbara Lepage</a>. Code licensed under 
+	  <a href="http://db0.fr/">Barbara Lepage</a>. Code licensed under
 	  <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">the Apache License v2.0.</a>.<br />
-	  Please <a href="contact.php">contact me</a> if you have any question about this service
-	  or if you want to be in the "<a href="who.html">Who\'s using it?</a>" page.<br />
+	  Please <a href="?contact">contact me</a> if you have any question about this service
+	  or if you want to be in the "<a href="?who">Who\'s using it?</a>" page.<br />
 	  Sources of the project on 
 	  <a href="https://github.com/db0company/Ionis-Users-Informations">GitHub</a>.
-	  Sources of this website are also available on
+	  Sources of this website/webservice are also available on
 	  <a href="https://github.com/db0company/Ionis-Users-Informations-Web-Service">GitHub</a>.
 	  <br />
 	  <br />
@@ -36,6 +36,14 @@ function	display_footer() {
     <script src="bootstrap/js/bootstrap-typeahead.js"></script>
 
     <script>
+      function show(node_name) {
+        $("#"+node_name).slideToggle("fast");
+      }
+
+      function jumpToAnchor(name) {
+        location.hash = "#"+name;
+      }
+
       function add_to_current_value(to_add) {
         if (typeof this.current_value == \'undefined\')
           this.current_value = 0;        
