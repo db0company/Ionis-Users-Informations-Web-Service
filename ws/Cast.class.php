@@ -92,7 +92,7 @@ class		Cast {
     if (!$this->isValid())
       return false;
     $valid = array('-', '_');
-    if(!ctype_alnum(str_replace($valid, '', $name)))
+    if(empty($name) || !ctype_alnum(str_replace($valid, '', $name)))
       return false;
 
     // check rights
@@ -175,7 +175,7 @@ class		Cast {
     if (!$this->checkRightForSelfAndParents($login, 'ADD_DEL_MEMBERS_CAST'))
       return false;
     $this->getMembers();
-    if (!$this->isValid() || !$iui->isLogin($login_to_add))
+    if (!$this->isValid() || empty($login_to_add) || !$iui->isLogin($login_to_add))
       return false;
     $req = $this->bdd->prepare('INSERT INTO group_member(id_group, login) VALUES(?, ?)');
     try { $req->execute(array($this->id, $login_to_add)); }
